@@ -39,6 +39,11 @@ export default function Home() {
           Take Order - Print Report
         </p>
       </Link>
+      <Link href={`/dashboard`}>
+        <p className='cursor-pointer'>
+          Dashboard
+        </p>
+      </Link>
     </div>
   )
 }
