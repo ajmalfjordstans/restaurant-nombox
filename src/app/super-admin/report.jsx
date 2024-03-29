@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Select, Option, Card, Button } from "@material-tailwind/react";
 import { DateCalendar } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
+import DrawerRight from '@/components/drawerRight';
 
 export default function Report() {
   const [showFilter, setShowFilter] = useState(false)
@@ -56,10 +57,10 @@ export default function Report() {
 
   return (
     <>
-      <div className='overflow-hidden h-[100vh] w-full overflow-y-scroll flex relative'>
-        <div className='w-full'>
-          <div className='flex justify-between fixed top-0 py-[15px] px-[50px] bg-base w-[90%] z-[200]'>
-            <div className='flex items-center gap-3 '>
+      <div className='overflow-hidden h-[100vh] w-full overflow-y-scroll flex'>
+        <div className={`w-[100%]`}>
+          <div className='flex justify-between py-[15px] px-[50px]  bg-base w-full z-[200] h-[15vh] sticky top-0'>
+            <div className='flex items-center gap-5 '>
               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48" >
                 <g clipPath="url(#clip0_333_536)">
                   <path
@@ -82,6 +83,8 @@ export default function Report() {
                 </defs>
               </svg>
               <p className='font-sora font-[600] text-[14px] leading-[17px]'>Z-Report Stat</p>
+            </div>
+            <div className='flex items-center gap-10'>
               <div className="w-72 ml-[60px]">
                 <Select label="Select Restaurant" className='bg-white'>
                   <Option>Restaurant 1</Option>
@@ -90,14 +93,17 @@ export default function Report() {
                   <Option>Restaurant 4</Option>
                 </Select>
               </div>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer z-[200]"
+                onClick={() => {
+                  setShowFilter(true)
+                }}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
             </div>
           </div>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 absolute right-10 top-7 cursor-pointer z-[200]"
-            onClick={() => { setShowFilter(true) }}
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-          <div className='mt-[80px] px-[50px] flex flex-col gap-[12px]'>
+
+          <div className='mt-[20px] px-[50px] flex flex-col gap-[12px]'>
             <Card className="h-full w-full overflow-scroll">
               <table className="w-full min-w-max table-auto text-left font-[700] text-[18px]">
                 <thead className=''>
@@ -176,9 +182,11 @@ export default function Report() {
                 onClick={() => alert(date)}
               >Search</Button>
             </div>
+
+
           </div>
         </div>
-      </div>
+      </div >
     </>
   )
 }

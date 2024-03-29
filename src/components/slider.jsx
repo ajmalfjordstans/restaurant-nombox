@@ -1,16 +1,37 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
 export default function Slider({ data }) {
+  const swiperRef = useRef(null);
+  const handleNextClick = () => {
+    if (swiperRef.current !== null) {
+      swiperRef.current.slideNext();
+    }
+  };
+  const handlePrevClick = () => {
+    if (swiperRef.current !== null) {
+      swiperRef.current.slidePrev();
+    }
+  };
   return (
     <div>
-      <p className='capitalize font-[700] text-[20px] leading-[23px]'>{data.name}</p>
+      <div className='flex w-full justify-between'>
+        <p className='capitalize font-[700] text-[20px] leading-[23px]'>{data.name}</p>
+        <div className='flex justify-between items-center gap-10'>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer" onClick={handlePrevClick}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer" onClick={handleNextClick}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          </svg>
+        </div>
+      </div>
       <Swiper
         spaceBetween={10}
         slidesPerView={4}
         onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
         className='mt-[30px]'
       >
         {data.items.map((data, id) => {

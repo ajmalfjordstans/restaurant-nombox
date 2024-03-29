@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Hide scrollbar for all browsers except Firefox */
+::-webkit-scrollbar {
+  width: 0;  /* Chrome, Safari, Opera */
+}
+
+/* Hide scrollbar for Firefox */
+html {
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Alternatively, to make the scrollbar transparent */
+::-webkit-scrollbar {
+  width: 8px;  /* Adjust width as needed */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;  /* Make scrollbar track transparent */
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;  /* Make scrollbar thumb transparent */
+}
+
+/* For Firefox, you can use the scrollbar-color property */
+html {
+  scrollbar-color: transparent transparent;  /* thumb, track */
+}

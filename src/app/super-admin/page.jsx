@@ -1,7 +1,7 @@
 'use client'
 import SideMenu from '@/components/sidemenu'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import Home from './home'
 import { useSearchParams } from 'next/navigation'
 import CompanyInfo from './company-info'
@@ -62,7 +62,9 @@ export default function Page() {
   return (
     <div className='flex'>
       <SideMenu active={active} />
-      <RenderPage setActive={setActive} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <RenderPage setActive={setActive} />
+      </Suspense>
     </div>
   )
 }

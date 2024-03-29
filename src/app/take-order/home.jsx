@@ -1,5 +1,5 @@
 'use client'
-import CartItems from '@/components/cartItems'
+import CartItems from '@/components/drawer/cartItems'
 import DrawerRight from '@/components/drawerRight'
 import Slider from '@/components/slider'
 import { Button } from '@material-tailwind/react'
