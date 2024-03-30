@@ -1,9 +1,8 @@
 'use client'
 import React, { useState } from 'react'
 import { Select, Option, Card, Button } from "@material-tailwind/react";
-import { DateCalendar } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
-import DrawerRight from '@/components/drawerRight';
+import ZReportDrawer from '@/components/drawer/z-report';
 
 export default function Report() {
   const [showFilter, setShowFilter] = useState(false)
@@ -104,8 +103,8 @@ export default function Report() {
           </div>
 
           <div className='mt-[20px] px-[50px] flex flex-col gap-[12px]'>
-            <Card className="h-full w-full overflow-scroll">
-              <table className="w-full min-w-max table-auto text-left font-[700] text-[18px]">
+           
+              <table className="w-full min-w-max table-auto text-left font-[700] text-[18px] rounded-[10px] overflow-hidden">
                 <thead className=''>
                   <tr>
                     {TABLE_HEAD.map((head) => (
@@ -155,7 +154,7 @@ export default function Report() {
                   ))}
                 </tbody>
               </table>
-            </Card>
+          
           </div>
         </div>
         <div className={`${showFilter ? 'w-[533px] bg-white block' : 'translate-x-[100%] w-0'} h-[100dvh] z-[300] transition-all duration-300 p-[30px]`}>
@@ -165,25 +164,7 @@ export default function Report() {
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
-
-            <div className='flex flex-col mt-[30px] gap-10'>
-              <div className='flex justify-between'>
-                <Button className='bg-second capitalize'>Previous</Button>
-                <Button className='bg-third capitalize'>Option</Button>
-                <Button className='bg-primary capitalize'>Next</Button>
-              </div>
-              <p className='font-sora font-[600] text-[14px] leading-[17px] text-primary'>Choose Date to find Daily Report</p>
-              <DateCalendar
-                defaultValue={date}
-                onChange={(newDate) => setDate(newDate)}
-              />
-              <Button
-                className='bg-third rounded-[10px] mt-[20px]'
-                onClick={() => alert(date)}
-              >Search</Button>
-            </div>
-
-
+               <ZReportDrawer />
           </div>
         </div>
       </div >

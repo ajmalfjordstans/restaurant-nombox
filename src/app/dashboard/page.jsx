@@ -5,20 +5,32 @@ import { useSearchParams } from 'next/navigation'
 import React, { Suspense, useState } from 'react'
 import Home from './home'
 import DrawerOne from './drawer_one'
-
-import CartItems from '@/components/drawer/cartItems' // Delete Later
+import ZReport from './z-report'
+import ZReportDrawer from '@/components/drawer/z-report'
+import EditMenu from './edit-menu'
+import EditMenuDrawer from '@/components/drawer/edit-menu'
+import WaitingTime from './waiting-time'
 function RenderPage({ setActive, setShowFilter, setShowDrawer }) {
   const section = useSearchParams().get('section')
-  if (section === 'settings') {
+  if (section === 'edit-menu') {
     setActive('settings')
+    setShowDrawer('edit-menu')
     return (
-      <Home setShowFilter={setShowFilter} />
+      <EditMenu setShowFilter={setShowFilter} />
     )
   }
-  else if (section === 'customer-details') {
-    setActive('cart')
+  else if (section === 'z-report') {
+    setActive('settings')
+    setShowDrawer('report')
     return (
-      <Home setShowFilter={setShowFilter} />
+      <ZReport setShowFilter={setShowFilter} />
+    )
+  }
+  else if (section === 'waiting-time') {
+    setActive('settings')
+    setShowDrawer('waiting-time')
+    return (
+      <WaitingTime setShowFilter={setShowFilter} />
     )
   }
   else {
@@ -31,14 +43,19 @@ function RenderPage({ setActive, setShowFilter, setShowDrawer }) {
 }
 
 function RenderDrawer({ showDrawer }) {
-  if (showDrawer === 'dashboard-home ') {
+  if (showDrawer === 'edit-menu') {
     return (
-      <DrawerOne />
+      <EditMenuDrawer />
     )
   }
-  else if (showDrawer === 'invoice') {
+  else if (showDrawer === 'report') {
     return (
-      <div>1</div>
+      <ZReportDrawer />
+    )
+  }
+  else if (showDrawer === 'waiting-time') {
+    return (
+      <ZReportDrawer />
     )
   }
   else {

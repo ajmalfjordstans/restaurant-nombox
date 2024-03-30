@@ -44,6 +44,21 @@ export default function Home() {
           Dashboard
         </p>
       </Link>
+      <Link href={`/dashboard?section=z-report`}>
+        <p className='cursor-pointer'>
+          Dashboard - Z Report
+        </p>
+      </Link>
+      <Link href={`/dashboard?section=edit-menu`}>
+        <p className='cursor-pointer'>
+          Dashboard - Edit Menu
+        </p>
+      </Link>
+      <Link href={`/dashboard?section=waiting-time`}>
+        <p className='cursor-pointer'>
+          Dashboard - Waiting Time
+        </p>
+      </Link>
     </div>
   )
 }

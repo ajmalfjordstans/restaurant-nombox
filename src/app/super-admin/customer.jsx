@@ -170,8 +170,8 @@ export default function Customer() {
                   </td>
                   <td className="p-4 border-[1px] border-[#DDDDDD]">
                     <>
-                      <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                        <div class="bg-blue-600 h-2.5 rounded-full" style={{ width: status + '%' }}></div>
+                      <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                        <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: status + '%' }}></div>
                       </div>
                     </>
                   </td>

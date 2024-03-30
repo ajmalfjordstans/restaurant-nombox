@@ -1,8 +1,9 @@
 import React, { useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import Image from 'next/image';
 
-export default function Slider({ data }) {
+export default function Slider({ data, isAdmin }) {
   const swiperRef = useRef(null);
   const handleNextClick = () => {
     if (swiperRef.current !== null) {
@@ -34,19 +35,28 @@ export default function Slider({ data }) {
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         className='mt-[30px]'
       >
+        {isAdmin &&
+          <SwiperSlide>
+            <div className={`bg-white flex flex-col justify-center items-center rounded-[10px] h-[167px] text-white gap-5 cursor-pointer shadow-lg`}>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="#DDDDDD" className="w-14 h-14">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </div>
+          </SwiperSlide>
+        }
         {data.items.map((data, id) => {
           return (
             <SwiperSlide key={id}>
-              <div className={`bg-[#07074D] flex flex-col justify-center items-center rounded-[10px] h-[167px] text-white gap-5`}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="51" height="46" fill="none" F viewBox="0 0 51 46"
-                >
-                  <path
-                    stroke="#fff"
-                    strokeWidth="2"
-                    d="M21.517 8.748C4.83 12.913 1.076 30.17 1.284 38.28H49C48.5 17.386 35.017 9.886 28.34 8.748 29.646 5.79 29.253 1 25.134 1c-5.31 0-4.451 5.151-3.617 7.748zM6.793 29.57c.53-3.266 2.926-10.347 8.276-12.543M1 44.65h48"
-                  ></path>
-                </svg>
+              <div className={`bg-[#07074D] flex flex-col justify-center items-center rounded-[10px] h-[167px] text-white gap-5 relative shadow-lg cursor-pointer`}>
+                <Image src={data.icon} height={48} width={48} alt='icon' />
                 <p>{data.name}</p>
+                {isAdmin &&
+                  <div className='bg-white rounded-full h-[30px] w-[30px] absolute bottom-3 right-3 cursor-pointer flex justify-center items-center'>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="black" className="w-6 h-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                    </svg>
+                  </div>
+                }
               </div>
             </SwiperSlide>
           )
