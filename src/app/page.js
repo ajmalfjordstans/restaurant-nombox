@@ -59,6 +59,46 @@ export default function Home() {
           Dashboard - Waiting Time
         </p>
       </Link>
+      <Link href={`/dashboard?section=online-banking`}>
+        <p className='cursor-pointer'>
+          Dashboard - Online Banking
+        </p>
+      </Link>
+      <Link href={`/dashboard?section=customer-feedback`}>
+        <p className='cursor-pointer'>
+          Dashboard - Customer Feedback
+        </p>
+      </Link>
+      <Link href={`/dashboard?section=customer-database`}>
+        <p className='cursor-pointer'>
+          Dashboard - Customer Database
+        </p>
+      </Link>
+      <Link href={`/dashboard?section=user-management`}>
+        <p className='cursor-pointer'>
+          Dashboard - User Management
+        </p>
+      </Link>
+      <Link href={`/dashboard?section=driver-screen`}>
+        <p className='cursor-pointer'>
+          Dashboard - Driver Screen
+        </p>
+      </Link>
+      <Link href={`/dashboard?section=driver-taking`}>
+        <p className='cursor-pointer'>
+          Dashboard - Driver Taking
+        </p>
+      </Link>
+      <Link href={`/dashboard?section=report-issue`}>
+        <p className='cursor-pointer'>
+          Dashboard - Report Issue
+        </p>
+      </Link>
+      <Link href={`/dashboard?section=table-order`}>
+        <p className='cursor-pointer'>
+          Dashboard - Table Order
+        </p>
+      </Link>
     </div>
   )
 }
