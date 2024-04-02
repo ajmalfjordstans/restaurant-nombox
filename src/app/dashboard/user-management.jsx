@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function UserManagement() {
+export default function UserManagement({ setShowFilter }) {
   const TABLE_HEAD = ["Restaurant Name", "Phone", "Pincode", "Type", ""];
   const TABLE_ROWS = [
     {

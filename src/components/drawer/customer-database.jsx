@@ -16,10 +16,10 @@ export default function CustomerDatabaseDrawer() {
     <>
       <div className='p-[30px]'>
         <div className='flex flex-col mt-[30px] gap-5'>
-          <div className='flex justify-between'>
-            <Button className='bg-second capitalize'>Search</Button>
-            <Button className='bg-third capitalize' onClick={() => setShowAdd(true)}>Add</Button>
-            <Button className='bg-primary capitalize'>Back</Button>
+          <div className='flex justify-between gap-1'>
+            <Button className='bg-second capitalize' fullWidth >Search</Button>
+            <Button className='bg-third capitalize' fullWidth onClick={() => setShowAdd(true)}>Add</Button>
+            <Button className='bg-primary capitalize' fullWidth >Back</Button>
           </div>
           <p className='font-raleway font-[700] text-[20px] leading-[24px] text-primary'>Search Customer Data</p>
           <div className='flex flex-col gap-2'>

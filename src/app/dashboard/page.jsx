@@ -2,7 +2,7 @@
 import DrawerRight from '@/components/drawerRight'
 import SideMenuCommon from '@/components/sidemenu-common'
 import { useSearchParams } from 'next/navigation'
-import React, { Suspense, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import Home from './home'
 import DrawerOne from './drawer_one'
 import ZReport from './z-report'
@@ -23,93 +23,93 @@ import DriverScreenDrawer from '@/components/drawer/driver-screen'
 import DriverTaking from './driver-taking'
 import ReportIssue from './report-issue'
 import TableOrder from './table-order'
+import DeliveryCharges from './delivery-charges'
+import DeliveryChargesDrawer from '@/components/drawer/delivery-charges'
+import Settings from './settings'
 function RenderPage({ setActive, setShowFilter, setShowDrawer }) {
-  const section = useSearchParams().get('section')
-  if (section === 'edit-menu') {
-    setActive('settings')
-    setShowDrawer('edit-menu')
-    return (
-      <EditMenu setShowFilter={setShowFilter} />
-    )
-  }
-  else if (section === 'z-report') {
-    setActive('settings')
-    setShowDrawer('report')
-    return (
-      <ZReport setShowFilter={setShowFilter} />
-    )
-  }
-  else if (section === 'waiting-time') {
-    setActive('settings')
-    setShowDrawer('waiting-time')
-    return (
-      <WaitingTime setShowFilter={setShowFilter} />
-    )
-  }
-  else if (section === 'online-banking') {
-    setActive('settings')
-    setShowDrawer('online-banking')
-    setShowFilter(false)
-    return (
-      <OnlineBanking setShowFilter={setShowFilter} />
-    )
-  }
-  else if (section === 'customer-feedback') {
-    setActive('settings')
-    setShowDrawer('customer-feedback')
-    return (
-      <CustomerFeedback setShowFilter={setShowFilter} />
-    )
-  }
-  else if (section === 'customer-database') {
-    setActive('settings')
-    setShowDrawer('customer-database')
-    return (
-      <CustomerDatabase setShowFilter={setShowFilter} />
-    )
-  }
-  else if (section === 'user-management') {
-    setActive('settings')
-    setShowDrawer('user-management')
-    return (
-      <UserManagement setShowFilter={setShowFilter} />
-    )
-  }
-  else if (section === 'driver-screen') {
-    setActive('settings')
-    setShowDrawer('driver-screen')
-    return (
-      <DriverScreen setShowFilter={setShowFilter} />
-    )
-  }
-  else if (section === 'driver-taking') {
-    setActive('settings')
-    setShowDrawer('driver-taking')
-    return (
-      <DriverTaking setShowFilter={setShowFilter} />
-    )
-  }
-  else if (section === 'report-issue') {
-    setShowFilter(false)
-    setActive('settings')
-    setShowDrawer('report-issue')
-    return (
-      <ReportIssue setShowFilter={setShowFilter} />
-    )
-  }
-  else if (section === 'table-order') {
-    setActive('settings')
-    setShowDrawer('table-order')
-    return (
-      <TableOrder setShowFilter={setShowFilter} />
-    )
-  }
-  else {
-    setActive('settings')
-    setShowDrawer('dashboard-home')
-    return (
-      <Home setShowFilter={setShowFilter} />
-    )
+  const section = useSearchParams().get('section');
+
+  useEffect(() => {
+    setActive('settings');
+
+    switch (section) {
+      case 'edit-menu':
+        setShowDrawer('edit-menu');
+        break;
+      case 'z-report':
+        setShowDrawer('report');
+        break;
+      case 'waiting-time':
+        setShowDrawer('waiting-time');
+        break;
+      case 'online-banking':
+        setShowDrawer('online-banking');
+        setShowFilter(false);
+        break;
+      case 'customer-feedback':
+        setShowDrawer('customer-feedback');
+        break;
+      case 'customer-database':
+        setShowDrawer('customer-database');
+        break;
+      case 'user-management':
+        setShowDrawer('user-management');
+        break;
+      case 'driver-screen':
+        setShowDrawer('driver-screen');
+        break;
+      case 'driver-taking':
+        setShowDrawer('driver-taking');
+        break;
+      case 'report-issue':
+        setShowDrawer('report-issue');
+        setShowFilter(false);
+        break;
+      case 'table-order':
+        setShowDrawer('table-order');
+        break;
+      case 'delivery-charges':
+        setShowDrawer('delivery-charges');
+        break;
+      case 'settings':
+        setShowDrawer('settings');
+        break;
+      default:
+        setShowDrawer('dashboard-home');
+        break;
+    }
+  }, [section, setActive, setShowDrawer, setShowFilter]);
+
+  // Render the appropriate component based on the section
+  switch (section) {
+    case 'edit-menu':
+      return <EditMenu setShowFilter={setShowFilter} />;
+    case 'z-report':
+      return <ZReport setShowFilter={setShowFilter} />;
+    case 'waiting-time':
+      return <WaitingTime setShowFilter={setShowFilter} />;
+    case 'online-banking':
+      return <OnlineBanking setShowFilter={setShowFilter} />;
+    case 'customer-feedback':
+      return <CustomerFeedback setShowFilter={setShowFilter} />;
+    case 'customer-database':
+      return <CustomerDatabase setShowFilter={setShowFilter} />;
+    case 'user-management':
+      return <UserManagement setShowFilter={setShowFilter} />;
+    case 'driver-screen':
+      return <DriverScreen setShowFilter={setShowFilter} />;
+    case 'driver-taking':
+      return <DriverTaking setShowFilter={setShowFilter} />;
+    case 'report-issue':
+      return <ReportIssue setShowFilter={setShowFilter} />;
+    case 'table-order':
+      return <TableOrder setShowFilter={setShowFilter} />;
+    case 'delivery-charges':
+      return <DeliveryCharges setShowFilter={setShowFilter} />;
+    case 'settings':
+      return <Settings setShowFilter={setShowFilter} />;
+    default:
+      return <Home setShowFilter={setShowFilter} />;
   }
 }
 
@@ -165,6 +165,14 @@ function RenderDrawer({ showDrawer }) {
   else if (showDrawer === 'report-issue') {
     return
   }
+  else if (showDrawer === 'delivery-charges') {
+    return (
+      <DeliveryChargesDrawer />
+    )
+  }
+  else if (showDrawer === 'settings') {
+    return
+  }
   else {
     return (
       <DrawerOne />
@@ -174,12 +182,12 @@ function RenderDrawer({ showDrawer }) {
 
 export default function Page() {
   const [active, setActive] = useState('')
-  const [showFilter, setShowFilter] = useState(true) //Default True
+  const [showFilter, setShowFilter] = useState(false) //Default True if drawer to be shown always
   const [showDrawer, setShowDrawer] = useState('cart')
   return (
     <div className='flex w-[100vw] overflow-y-hidden h-[100vh] overflow-hidden'>
       <SideMenuCommon active={active} />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div className='w-full h-full flex justify-center items-center'>Loading...</div>}>
         <RenderPage setActive={setActive} setShowFilter={setShowFilter} setShowDrawer={setShowDrawer} />
       </Suspense>
       {/* Right side menu */}

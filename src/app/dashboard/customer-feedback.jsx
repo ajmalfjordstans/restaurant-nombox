@@ -1,7 +1,7 @@
 import { Button } from '@material-tailwind/react'
-import React from 'react'
+import React, { Suspense } from 'react'
 
-export function FeedbackCard({setShowFilter}) {
+export function FeedbackCard({ setShowFilter }) {
   return (
     <div className='p-[30px] rounded-[20px] bg-white flex gap-10'>
       <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="110" height="110" fill="none" viewBox="0 0 110 110"      >
@@ -61,7 +61,7 @@ export function FeedbackCard({setShowFilter}) {
   )
 }
 
-export default function CustomerFeedback() {
+export default function CustomerFeedback({ setShowFilter }) {
   return (
     <div className='overflow-hidden h-[100vh] w-full overflow-y-scroll flex'>
       <div className={`w-[100%]`}>

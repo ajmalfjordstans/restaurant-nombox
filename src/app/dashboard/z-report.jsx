@@ -1,7 +1,7 @@
 import { Option, Select } from '@material-tailwind/react'
 import React from 'react'
 
-export default function ZReport() {
+export default function ZReport({ setShowFilter }) {
   const TABLE_HEAD = ["", "Orders", "Price", "Percentage"];
   const TABLE_ROWS = [
     {

@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <div className='container mx-auto text-[20px] p-[10%]'>
+    <div className='container mx-auto text-[20px] px-[10%] py-[100px]'>
       <Link href={`/login`}>
         <p className='cursor-pointer'>
           Login
@@ -97,6 +97,16 @@ export default function Home() {
       <Link href={`/dashboard?section=table-order`}>
         <p className='cursor-pointer'>
           Dashboard - Table Order
+        </p>
+      </Link>
+      <Link href={`/dashboard?section=delivery-charges`}>
+        <p className='cursor-pointer'>
+          Dashboard - Delivery Charges
+        </p>
+      </Link>
+      <Link href={`/dashboard?section=settings`}>
+        <p className='cursor-pointer'>
+          Dashboard - Settings
         </p>
       </Link>
     </div>
