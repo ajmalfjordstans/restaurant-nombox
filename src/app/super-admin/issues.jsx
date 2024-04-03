@@ -48,9 +48,7 @@ export function Card({ data }) {
   )
 }
 
-export default function Issues() {
-  const [showFilter, setShowFilter] = useState(false)
-  const [date, setDate] = useState(dayjs(new Date()))
+export default function Issues({ setShowFilter }) {
   return (
     <div className='overflow-hidden h-[100vh] w-full overflow-y-scroll flex'>
       <div className={`w-[100%]`}>
@@ -107,7 +105,7 @@ export default function Issues() {
           <Card />
         </div>
       </div>
-      <div className={`${showFilter ? 'w-[533px] bg-white block' : 'translate-x-[100%] w-0'} h-[100dvh] z-[300] transition-all duration-300 p-[30px]`}>
+      {/* <div className={`${showFilter ? 'w-[533px] bg-white block' : 'translate-x-[100%] w-0'} h-[100dvh] z-[300] transition-all duration-300 p-[30px]`}>
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer"
             onClick={() => { setShowFilter(false) }}
@@ -130,7 +128,7 @@ export default function Issues() {
             >Search</Button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

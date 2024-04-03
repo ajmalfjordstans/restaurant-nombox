@@ -59,7 +59,7 @@ export default function CompanyInfo() {
         </svg>
         <p className='font-sora font-[600] text-[14px] leading-[17px]'>Company info</p>
       </div>
-      <div className='bg-primary rounded-[20px] mt-[95px] mb-[30px] w-full  text-white p-[30px] font-raleway font-[700] text-[14px] leading-[16px] grid grid-cols-2 gap-5'>
+      <div className='bg-primary rounded-[20px] mt-[95px] mb-[30px] w-full  text-white p-[30px] font-raleway font-[700] text-[14px] leading-[16px] grid lg:grid-cols-2 gap-5'>
         <div className='flex flex-col gap-5'>
           {/* Branch Code */}
           <div className='flex items-center'>

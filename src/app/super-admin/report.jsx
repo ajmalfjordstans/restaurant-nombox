@@ -1,12 +1,8 @@
 'use client'
-import React, { useState } from 'react'
-import { Select, Option, Card, Button } from "@material-tailwind/react";
-import dayjs from 'dayjs';
-import ZReportDrawer from '@/components/drawer/z-report';
+import React from 'react'
+import { Select, Option, } from "@material-tailwind/react";
 
-export default function Report() {
-  const [showFilter, setShowFilter] = useState(false)
-  const [date, setDate] = useState(dayjs(new Date()))
+export default function Report({ setShowFilter }) {
   const TABLE_HEAD = ["", "Orders", "Price", "Percentage"];
   const TABLE_ROWS = [
     {
@@ -103,68 +99,57 @@ export default function Report() {
           </div>
 
           <div className='mt-[20px] px-[50px] flex flex-col gap-[12px]'>
-           
-              <table className="w-full min-w-max table-auto text-left font-[700] text-[18px] rounded-[10px] overflow-hidden">
-                <thead className=''>
-                  <tr>
-                    {TABLE_HEAD.map((head) => (
-                      <th key={head} className="border-b bg-second p-4 border-[1px] border-[#DDDDDD] ">
-                        <p
-                          className=" leading-[22px] text-white"
-                        >
-                          {head}
-                        </p>
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {TABLE_ROWS.map(({ name, orders, price, percentage }, index) => (
-                    <tr key={name} className="even:bg-blue-gray-50/50 font-[700] text-black">
-                      <td className="p-4 border-[1px] border-[#DDDDDD]">
-                        <>
-                          <p className="">
-                            {name}
-                          </p>
-                        </>
-                      </td>
-                      <td className="p-4 border-[1px] border-[#DDDDDD]">
-                        <>
-                          <p className="text-[15px] leading-[17px]">
-                            {orders}
-                          </p>
-                        </>
-                      </td>
-                      <td className="p-4 border-[1px] border-[#DDDDDD]">
-                        <>
-                          <p className="text-[15px] leading-[17px]">
-                            {price}
-                          </p>
-                        </>
-                      </td>
-                      <td className="p-4 border-[1px] border-[#DDDDDD]">
-                        <>
-                          <p className="text-[15px] leading-[17px]">
-                            {percentage}%
-                          </p>
-                        </>
-                      </td>
 
-                    </tr>
+            <table className="w-full min-w-max table-auto text-left font-[700] text-[18px] rounded-[10px] overflow-hidden">
+              <thead className=''>
+                <tr>
+                  {TABLE_HEAD.map((head) => (
+                    <th key={head} className="border-b bg-second p-4 border-[1px] border-[#DDDDDD] ">
+                      <p
+                        className=" leading-[22px] text-white"
+                      >
+                        {head}
+                      </p>
+                    </th>
                   ))}
-                </tbody>
-              </table>
-          
-          </div>
-        </div>
-        <div className={`${showFilter ? 'w-[533px] bg-white block' : 'translate-x-[100%] w-0'} h-[100dvh] z-[300] transition-all duration-300 p-[30px]`}>
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer"
-              onClick={() => { setShowFilter(false) }}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
-               <ZReportDrawer />
+                </tr>
+              </thead>
+              <tbody>
+                {TABLE_ROWS.map(({ name, orders, price, percentage }, index) => (
+                  <tr key={name} className="even:bg-blue-gray-50/50 font-[700] text-black">
+                    <td className="p-4 border-[1px] border-[#DDDDDD]">
+                      <>
+                        <p className="">
+                          {name}
+                        </p>
+                      </>
+                    </td>
+                    <td className="p-4 border-[1px] border-[#DDDDDD]">
+                      <>
+                        <p className="text-[15px] leading-[17px]">
+                          {orders}
+                        </p>
+                      </>
+                    </td>
+                    <td className="p-4 border-[1px] border-[#DDDDDD]">
+                      <>
+                        <p className="text-[15px] leading-[17px]">
+                          {price}
+                        </p>
+                      </>
+                    </td>
+                    <td className="p-4 border-[1px] border-[#DDDDDD]">
+                      <>
+                        <p className="text-[15px] leading-[17px]">
+                          {percentage}%
+                        </p>
+                      </>
+                    </td>
+
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div >

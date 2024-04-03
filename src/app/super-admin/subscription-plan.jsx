@@ -1,8 +1,7 @@
 import { Button, Card, Option, Select } from '@material-tailwind/react'
 import React, { useState } from 'react'
 
-export default function SubscriptionPlan() {
-  const [showFilter, setShowFilter] = useState(false)
+export default function SubscriptionPlan({ setShowFilter }) {
   const TABLE_HEAD = ["Plan", "Subscription", "Price", ""];
   const TABLE_ROWS = [
     {
@@ -119,42 +118,9 @@ export default function SubscriptionPlan() {
           </Card>
         </div>
       </div>
-      <div className={`${showFilter ? 'w-[533px] bg-white block' : 'translate-x-[100%] w-0'} h-[100dvh] z-[300] transition-all duration-300 p-[30px]`}>
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer"
-            onClick={() => { setShowFilter(false) }}
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-          </svg>
-
-          <div className='flex flex-col mt-[30px] gap-5'>
-            <p className='font-sora font-[600] text-[14px] leading-[17px] text-primary'>Add Subscription</p>
-            <div className="flex flex-col gap-3">
-              <p className='font-sora font-[600] text-[14px] leading-[17px] text-primary'>Choose Plan</p>
-              <Select label="Basic" className='bg-white'>
-                <Option>Basic</Option>
-                <Option>Premium</Option>
-                <Option>Full</Option>
-              </Select>
-            </div>
-            <div className="flex flex-col gap-3">
-              <p className='font-sora font-[600] text-[14px] leading-[17px] text-primary'>Choose Subscription</p>
-              <Select label="Montly" className='bg-white'>
-                <Option>Monthly</Option>
-                <Option>Yearly</Option>
-              </Select>
-            </div>
-            <div className="flex flex-col gap-3">
-              <p className='font-sora font-[600] text-[14px] leading-[17px] text-primary'>Price</p>
-              <input type="text" className='border-[1px] border-blue-gray-200 px-3 py-2 rounded-[7px]' />
-            </div>
-            <Button
-              className='bg-third rounded-[10px] mt-[20px]'
-              // onClick={() => alert(date)}
-            >Save</Button>
-          </div>
-        </div>
-      </div>
+      {/* <div className={`${showFilter ? 'w-[533px] bg-white block' : 'translate-x-[100%] w-0'} h-[100dvh] z-[300] transition-all duration-300 p-[30px]`}>
+       
+      </div> */}
     </div>
   )
 }

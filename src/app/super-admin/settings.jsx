@@ -209,39 +209,39 @@ export default function Settings() {
                     </>
                   </td>
                   <td className="p-4 border-[1px] border-[#DDDDDD]">
-                    <>
+                    <div className='flex justify-center'>
                       <input type="radio" />
-                    </>
+                    </div>
                   </td>
                   <td className="p-4 border-[1px] border-[#DDDDDD]">
-                    <>
+                    <div className='flex justify-center'>
                       <input type="radio" />
 
-                    </>
+                    </div>
                   </td>
                   <td className="p-4 border-[1px] border-[#DDDDDD]">
-                    <>
+                    <div className='flex justify-center'>
                       <input type="radio" />
 
-                    </>
+                    </div>
                   </td>
                   <td className="p-4 border-[1px] border-[#DDDDDD]">
-                    <>
+                    <div className='flex justify-center'>
                       <input type="radio" />
 
-                    </>
+                    </div>
                   </td>
                   <td className="p-4 border-[1px] border-[#DDDDDD]">
-                    <>
+                    <div className='flex justify-center'>
                       <input type="radio" />
 
-                    </>
+                    </div>
                   </td>
                   <td className="p-4 border-[1px] border-[#DDDDDD]">
-                    <>
+                    <div className='flex justify-center'>
                       <input type="radio" />
 
-                    </>
+                    </div>
                   </td>
                 </tr>
               ))}
