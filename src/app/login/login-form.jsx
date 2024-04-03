@@ -11,7 +11,7 @@ const LoginForm = () => {
   return (
     <div className="flex flex-col gap-4 mt-[50px]">
       {/* Username field */}
-      <div className="h-[94px] w-full md:w-[611px] rounded-[20px] bg-white flex overflow-hidden">
+      <div className="h-[60px] md:h-[94px] w-full md:w-[611px] rounded-[20px] bg-white flex overflow-hidden">
         <span className="flex items-center pl-3 text-gray-400">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="36" className='' fill="none" viewBox="0 0 36 38">
             <path
@@ -30,7 +30,7 @@ const LoginForm = () => {
       </div>
 
       {/* Password field */}
-      <div className="h-[94px] w-full max-w-[611px] rounded-[20px] bg-white flex overflow-hidden">
+      <div className="h-[60px] md:h-[94px] w-full max-w-[611px] rounded-[20px] bg-white flex overflow-hidden">
         <span className="flex items-center pl-3 text-gray-400">
           <svg xmlns="http://www.w3.org/2000/svg" width="37" height="42" fill="none" viewBox="0 0 37 45" >
             <rect width="32" height="23" x="2.5" y="19.5" stroke="#FF4BAC" strokeWidth="5" rx="7.5" ></rect>

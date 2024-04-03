@@ -1,6 +1,7 @@
 'use client'
 import { Button, Option, Select } from '@material-tailwind/react'
 import React, { useState } from 'react'
+import GoogleMapComponent from '../map/map'
 
 export default function DeliveryChargesDrawer() {
   const [showAdd, setShowAdd] = useState(false)
@@ -40,8 +41,11 @@ export default function DeliveryChargesDrawer() {
           </div>
           <Button
             className='bg-third rounded-[10px] mt-[20px]'
-            onClick={() => alert(date)}
-          >Search</Button>
+            onClick={() => alert("")}
+          >Check</Button>
+          <div className='rounded-[20px] overflow-hidden'>
+            <GoogleMapComponent />
+          </div>
         </div>
       </div>
       {showAdd &&

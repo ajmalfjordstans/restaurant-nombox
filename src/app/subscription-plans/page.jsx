@@ -179,8 +179,8 @@ export default function Page() {
         </svg>
         <p className='font-sora font-[600] text-[14px] leading-[17px]'>Subscription Plans</p>
       </div>
-      <div className='container mx-auto p-[40px]'>
-        <div className='grid grid-cols-3 gap-10'>
+      <div className='container mx-auto pt-[30px] lg:p-[40px]'>
+        <div className='grid md:grid-cols-3 gap-3 lg:gap-10'>
           {subplans.map((data, id) => {
             return (
               <Plans key={id} data={data} />
