@@ -2,7 +2,7 @@
 import React from 'react'
 import { Card } from "@material-tailwind/react";
 
-export default function Settings() {
+export default function Settings({ setShowIconDrawer, showIconDrawer }) {
   const TABLE_HEAD = ["", "All", "Report Stat", "Online Banking", 'Billing  System', 'Customer Feedback', "Customer Data"];
   const TABLE_ROWS = [
     {
@@ -161,8 +161,23 @@ export default function Settings() {
   ];
   return (
     <div className=' h-[100vh] w-full overflow-y-scroll'>
-      <div className='flex flex-col gap-3 fixed top-0 py-[15px] px-[50px] bg-base w-full z-[200]'>
-        <div className='flex items-center gap-2'>
+      <div className='flex flex-col gap-3 fixed top-0 py-[15px] px-[20px] lg:px-[50px] bg-base w-full z-[200]'>
+        <div className={`flex items-center gap-2 ${showIconDrawer ? "translate-x-[100px]" : ""} lg:translate-x-[0px] transition-all duration-300`}>
+          <div className='lg:hidden'>
+            {showIconDrawer ?
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+                onClick={() => setShowIconDrawer(false)}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+              :
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+                onClick={() => setShowIconDrawer(true)}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+              </svg>
+            }
+          </div>
           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48"          >
             <g clipPath="url(#clip0_333_511)">
               <path fill="#CEE1F2" d="M27.75 42.375v-.085c0-.114.008-.228.019-.34a5.62 5.62 0 00-2.026-1.175 9.072 9.072 0 00-1.46-3.59 9.098 9.098 0 00-4.198-3.342 10.561 10.561 0 01-2.783-1.621 9.13 9.13 0 00-4.481-1.95 9.01 9.01 0 00.641-4.81 10.76 10.76 0 01.01-3.033 9.014 9.014 0 00-.611-4.816 9.177 9.177 0 004.5-1.93 10.566 10.566 0 012.72-1.571 9.113 9.113 0 004.195-3.335 9.065 9.065 0 001.458-3.55 5.62 5.62 0 002.04-1.181 3.472 3.472 0 01-.024-.383v-.038a3.75 3.75 0 00-7.5 0c0 1.44-.887 2.725-2.227 3.252a16.204 16.204 0 00-4.167 2.407 3.508 3.508 0 01-3.92.325l-.108-.06a3.766 3.766 0 00-5.122 1.415 3.736 3.736 0 001.421 5.101l.03.017c1.25.71 1.957 2.11 1.749 3.532a16.303 16.303 0 00-.014 4.628 3.471 3.471 0 01-1.736 3.489l-.029.016a3.736 3.736 0 00-1.42 5.102 3.766 3.766 0 005.12 1.415l.006-.003a3.502 3.502 0 013.933.336 16.2 16.2 0 004.263 2.482 3.493 3.493 0 012.221 3.25v.046a3.75 3.75 0 007.5 0z"
@@ -180,9 +195,9 @@ export default function Settings() {
           </svg>
           <p className='font-sora font-[600] text-[14px] leading-[17px]'>Settings</p>
         </div>
-        <p className='font-[400] font-raleway text-[30px] leading-[35px] mt-[20px]'>Customer Permission Settings</p>
+        <p className='font-[400] font-raleway text-[22px] lg:text-[30px] leading-[35px] mt-[20px]'>Customer Permission Settings</p>
       </div>
-      <div className='mt-[150px] px-[50px] pb-[30px] overflow-y-scroll'>
+      <div className='mt-[150px] px-[20px] lg:px-[50px] pb-[30px] overflow-y-scroll'>
         <Card className="h-full w-full overflow-scroll">
           <table className="w-full min-w-max table-auto text-left font-[700] text-[18px]">
             <thead className=''>

@@ -2,7 +2,7 @@
 import { Button } from '@material-tailwind/react'
 import React, { useState } from 'react'
 
-export default function CompanyInfo() {
+export default function CompanyInfo({ setShowIconDrawer, showIconDrawer }) {
   const [companyInfo, setCompanyInfo] = useState({
     branchCode: '',
     branchName: '',
@@ -28,8 +28,23 @@ export default function CompanyInfo() {
     nonUKCurrency: false
   })
   return (
-    <div className='px-[50px] h-[100vh] w-full overflow-y-scroll'>
-      <div className='flex gap-2 items-center fixed top-0 py-[15px] bg-base w-full'>
+    <div className='px-[20px] lg:px-[50px] h-[100vh] w-full overflow-y-scroll'>
+      <div className={`flex gap-2 items-center fixed top-0 py-[15px] bg-base w-full ${showIconDrawer ? "translate-x-[100px]" : ""} lg:translate-x-[0px] transition-all duration-300`}>
+        <div className='lg:hidden'>
+          {showIconDrawer ?
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+              onClick={() => setShowIconDrawer(false)}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+            :
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+              onClick={() => setShowIconDrawer(true)}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+            </svg>
+          }
+        </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="48"

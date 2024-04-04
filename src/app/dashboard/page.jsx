@@ -62,7 +62,7 @@ function RenderPage({ setActive, setShowFilter, setShowDrawer }) {
         setShowDrawer('driver-taking');
         break;
       case 'report-issue':
-        setShowDrawer('report-issue');
+        setShowDrawer('C');
         setShowFilter(false);
         break;
       case 'table-order':

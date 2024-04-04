@@ -29,6 +29,12 @@ export default function Home() {
           Take Order
         </p>
       </Link>
+      <Link href={`/dashboard`}>
+        <p className='cursor-pointer'>
+          Dashboard
+        </p>
+      </Link>
+      
       <Link href={`/take-order?section=customer-details`}>
         <p className='cursor-pointer'>
           Take Order - customer details
@@ -39,11 +45,7 @@ export default function Home() {
           Take Order - Print Report
         </p>
       </Link>
-      <Link href={`/dashboard`}>
-        <p className='cursor-pointer'>
-          Dashboard
-        </p>
-      </Link>
+
       <Link href={`/dashboard?section=z-report`}>
         <p className='cursor-pointer'>
           Dashboard - Z Report

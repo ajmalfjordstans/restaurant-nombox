@@ -30,7 +30,15 @@ export default function Slider({ data, isAdmin }) {
       </div>
       <Swiper
         spaceBetween={10}
-        slidesPerView={4}
+        slidesPerView={2}
+        breakpoints={{
+          540: {
+            slidesPerView: 3,
+          },
+          1024: {
+            slidesPerView: 4,
+          },
+        }}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         className='mt-[30px]'

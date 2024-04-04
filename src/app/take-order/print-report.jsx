@@ -1,11 +1,27 @@
+import Link from 'next/link'
 import React from 'react'
 
-export default function PrintReport({ setShowFilter }) {
+export default function PrintReport({ setShowFilter, setShowIconDrawer, showIconDrawer }) {
   return (
     <div className='overflow-hidden h-[100vh] w-full overflow-y-scroll flex'>
       <div className={`w-[100%]`}>
-        <div className='flex justify-between py-[15px] px-[50px]  bg-base w-full z-[200] h-[15vh] sticky top-0'>
-          <div className='flex items-center gap-5 '>
+        <div className='flex justify-between py-[15px] px-[20px] lg:px-[50px]  bg-base w-full z-[200] h-[15vh] sticky top-0'>
+          <div className={`flex items-center gap-5 ${showIconDrawer ? "translate-x-[100px]" : ""} lg:translate-x-[0px] transition-all duration-300`}>
+            <div className='lg:hidden'>
+              {showIconDrawer ?
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+                  onClick={() => setShowIconDrawer(false)}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+                :
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+                  onClick={() => setShowIconDrawer(true)}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                </svg>
+              }
+            </div>
             <svg xmlns="http://www.w3.org/2000/svg" width="51" height="51" fill="none" viewBox="0 0 51 51"            >
               <g clipPath="url(#clip0_324_4)">
                 <path fill="#1428BF" d="M31.076 51H20.122c-6.588 0-11.949-5.36-11.949-11.95v-5.393c0-4.393 3.574-7.966 7.966-7.966h18.92c4.392 0 7.966 3.573 7.966 7.966v5.394c0 6.589-5.36 11.949-11.95 11.949zM16.139 29.674a3.988 3.988 0 00-3.983 3.983v5.394c0 4.392 3.574 7.966 7.966 7.966h10.954c4.392 0 7.966-3.574 7.966-7.966v-5.394a3.988 3.988 0 00-3.983-3.983h-18.92zm26.886-17.725C43.025 5.36 37.665 0 31.075 0H20.123C13.534 0 8.173 5.36 8.173 11.95a1.991 1.991 0 103.983 0c0-4.393 3.574-7.967 7.966-7.967h10.954c4.392 0 7.966 3.574 7.966 7.966a1.991 1.991 0 103.983 0zm7.966 24.795v-7.07c0-6.589-5.36-11.95-11.95-11.95H11.958c-6.589 0-11.95 5.361-11.95 11.95v7.07a1.991 1.991 0 103.984 0v-7.07c0-4.393 3.573-7.966 7.966-7.966h27.085c4.392 0 7.966 3.573 7.966 7.966v7.07a1.991 1.991 0 103.983 0z"
@@ -35,19 +51,21 @@ export default function PrintReport({ setShowFilter }) {
 
 
         {/* Main Content */}
-        <div className={`mt-[20px] px-[50px] pb-[60px] flex gap-[30px]`}>
-          <div className='h-[142px] w-[142px] flex flex-col justify-center items-center gap-3 bg-white rounded-[8px] hover:shadow-md cursor-pointer transition-all duration-300'>
-            <svg xmlns="http://www.w3.org/2000/svg" width="53" height="49" fill="none" viewBox="0 0 53 49"            >
-              <path stroke="#1428BF" strokeWidth="4"
-                d="M22.517 9.748C5.83 13.913 2.076 31.17 2.284 39.28H50C49.5 18.386 36.017 10.886 29.34 9.748 30.646 6.79 30.253 2 26.134 2c-5.31 0-4.451 5.151-3.617 7.748z"
-              ></path>
-              <path stroke="#FF4BAC" strokeWidth="2"
-                d="M7.793 30.57c.53-3.266 2.926-10.347 8.276-12.543"
-              ></path>
-              <path stroke="#FF4BAC" strokeWidth="5" d="M2 45.65h48"></path>
-            </svg>
-            <p className='font-sora font-[600] text-[14px] leading-[17px]'>Items Report</p>
-          </div>
+        <div className={`mt-[20px] px-[20px] lg:px-[50px] pb-[60px] flex flex-wrap gap-[30px]`}>
+          <Link href="/take-order?section=items-report">
+            <div className='h-[142px] w-[142px] flex flex-col justify-center items-center gap-3 bg-white rounded-[8px] hover:shadow-md cursor-pointer transition-all duration-300'>
+              <svg xmlns="http://www.w3.org/2000/svg" width="53" height="49" fill="none" viewBox="0 0 53 49"            >
+                <path stroke="#1428BF" strokeWidth="4"
+                  d="M22.517 9.748C5.83 13.913 2.076 31.17 2.284 39.28H50C49.5 18.386 36.017 10.886 29.34 9.748 30.646 6.79 30.253 2 26.134 2c-5.31 0-4.451 5.151-3.617 7.748z"
+                ></path>
+                <path stroke="#FF4BAC" strokeWidth="2"
+                  d="M7.793 30.57c.53-3.266 2.926-10.347 8.276-12.543"
+                ></path>
+                <path stroke="#FF4BAC" strokeWidth="5" d="M2 45.65h48"></path>
+              </svg>
+              <p className='font-sora font-[600] text-[14px] leading-[17px]'>Items Report</p>
+            </div>
+          </Link>
           <div className='h-[142px] w-[142px] flex flex-col justify-center items-center gap-3 bg-white rounded-[8px] hover:shadow-md cursor-pointer transition-all duration-300'>
             <svg xmlns="http://www.w3.org/2000/svg" width="41" height="48" fill="none" viewBox="0 0 41 48"            >
               <path fill="#CEE1F2"
@@ -62,27 +80,29 @@ export default function PrintReport({ setShowFilter }) {
             </svg>
             <p className='font-sora font-[600] text-[14px] leading-[17px]'>Sales Report</p>
           </div>
-          <div className='h-[142px] w-[142px] flex flex-col justify-center items-center gap-3 bg-white rounded-[8px] hover:shadow-md cursor-pointer transition-all duration-300'>
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48"            >
-              <g clipPath="url(#clip0_325_43)">
-                <path fill="#CEE1F2"
-                  d="M7.5 29.25v-18a9.375 9.375 0 019.375-9.375H11.25a9.375 9.375 0 00-9.375 9.375v18a9.375 9.375 0 009.375 9.375h5.625A9.375 9.375 0 017.5 29.25z"
-                ></path>
-                <path fill="#4E2DD8"
-                  d="M36.75 40.5h-25.5C5.047 40.5 0 35.453 0 29.25v-18C0 5.047 5.047 0 11.25 0h18a1.875 1.875 0 110 3.75h-18c-4.136 0-7.5 3.364-7.5 7.5v18c0 4.135 3.364 7.5 7.5 7.5h25.5c4.135 0 7.5-3.365 7.5-7.5v-.75a1.875 1.875 0 013.75 0v.75c0 6.203-5.047 11.25-11.25 11.25zm6.959 5.983a11.313 11.313 0 004.027-3.985 1.875 1.875 0 10-3.222-1.918 7.543 7.543 0 01-6.45 3.67H9.937a7.543 7.543 0 01-6.45-3.67 1.875 1.875 0 00-3.222 1.918 11.313 11.313 0 004.028 3.985A11.248 11.248 0 009.937 48h28.127c1.985 0 3.937-.525 5.645-1.517zM25.875 31.125V9.375a1.875 1.875 0 10-3.75 0v21.75a1.875 1.875 0 103.75 0zm-7.5-18.094c0-1.035-.84-1.875-1.875-1.875H9.375a1.875 1.875 0 100 3.75H16.5c1.035 0 1.875-.84 1.875-1.875zm0 7.5c0-1.035-.84-1.875-1.875-1.875H9.375a1.875 1.875 0 000 3.75H16.5c1.035 0 1.875-.84 1.875-1.875zm22.125 7.5c0-1.035-.84-1.875-1.875-1.875H31.5a1.875 1.875 0 100 3.75h7.125c1.035 0 1.875-.84 1.875-1.875zm-22.125 0c0-1.035-.84-1.875-1.875-1.875H9.375a1.875 1.875 0 100 3.75H16.5c1.035 0 1.875-.84 1.875-1.875z"
-                ></path>
-                <path fill="#FF4BAC"
-                  d="M39.656 11.25a5.631 5.631 0 01-5.625-5.625A5.631 5.631 0 0139.656 0a5.631 5.631 0 015.625 5.625 5.631 5.631 0 01-5.625 5.625zm0-7.5a1.877 1.877 0 00-1.875 1.875c0 1.034.841 1.875 1.875 1.875a1.877 1.877 0 001.875-1.875 1.877 1.877 0 00-1.875-1.875zM48 21c0-4.239-3.497-7.688-7.796-7.688h-1.096c-4.299 0-7.795 3.449-7.795 7.688a1.875 1.875 0 103.75 0c0-2.171 1.814-3.938 4.045-3.938h1.096c2.231 0 4.046 1.767 4.046 3.938A1.875 1.875 0 0048 21z"
-                ></path>
-              </g>
-              <defs>
-                <clipPath id="clip0_325_43">
-                  <path fill="#fff" d="M0 0H48V48H0z"></path>
-                </clipPath>
-              </defs>
-            </svg>
-            <p className='font-sora font-[600] text-[14px] leading-[17px]'>Customer Report</p>
-          </div>
+          <Link href="/super-admin?section=customer-info">
+            <div className='h-[142px] w-[142px] flex flex-col justify-center items-center gap-3 bg-white rounded-[8px] hover:shadow-md cursor-pointer transition-all duration-300'>
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48"            >
+                <g clipPath="url(#clip0_325_43)">
+                  <path fill="#CEE1F2"
+                    d="M7.5 29.25v-18a9.375 9.375 0 019.375-9.375H11.25a9.375 9.375 0 00-9.375 9.375v18a9.375 9.375 0 009.375 9.375h5.625A9.375 9.375 0 017.5 29.25z"
+                  ></path>
+                  <path fill="#4E2DD8"
+                    d="M36.75 40.5h-25.5C5.047 40.5 0 35.453 0 29.25v-18C0 5.047 5.047 0 11.25 0h18a1.875 1.875 0 110 3.75h-18c-4.136 0-7.5 3.364-7.5 7.5v18c0 4.135 3.364 7.5 7.5 7.5h25.5c4.135 0 7.5-3.365 7.5-7.5v-.75a1.875 1.875 0 013.75 0v.75c0 6.203-5.047 11.25-11.25 11.25zm6.959 5.983a11.313 11.313 0 004.027-3.985 1.875 1.875 0 10-3.222-1.918 7.543 7.543 0 01-6.45 3.67H9.937a7.543 7.543 0 01-6.45-3.67 1.875 1.875 0 00-3.222 1.918 11.313 11.313 0 004.028 3.985A11.248 11.248 0 009.937 48h28.127c1.985 0 3.937-.525 5.645-1.517zM25.875 31.125V9.375a1.875 1.875 0 10-3.75 0v21.75a1.875 1.875 0 103.75 0zm-7.5-18.094c0-1.035-.84-1.875-1.875-1.875H9.375a1.875 1.875 0 100 3.75H16.5c1.035 0 1.875-.84 1.875-1.875zm0 7.5c0-1.035-.84-1.875-1.875-1.875H9.375a1.875 1.875 0 000 3.75H16.5c1.035 0 1.875-.84 1.875-1.875zm22.125 7.5c0-1.035-.84-1.875-1.875-1.875H31.5a1.875 1.875 0 100 3.75h7.125c1.035 0 1.875-.84 1.875-1.875zm-22.125 0c0-1.035-.84-1.875-1.875-1.875H9.375a1.875 1.875 0 100 3.75H16.5c1.035 0 1.875-.84 1.875-1.875z"
+                  ></path>
+                  <path fill="#FF4BAC"
+                    d="M39.656 11.25a5.631 5.631 0 01-5.625-5.625A5.631 5.631 0 0139.656 0a5.631 5.631 0 015.625 5.625 5.631 5.631 0 01-5.625 5.625zm0-7.5a1.877 1.877 0 00-1.875 1.875c0 1.034.841 1.875 1.875 1.875a1.877 1.877 0 001.875-1.875 1.877 1.877 0 00-1.875-1.875zM48 21c0-4.239-3.497-7.688-7.796-7.688h-1.096c-4.299 0-7.795 3.449-7.795 7.688a1.875 1.875 0 103.75 0c0-2.171 1.814-3.938 4.045-3.938h1.096c2.231 0 4.046 1.767 4.046 3.938A1.875 1.875 0 0048 21z"
+                  ></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_325_43">
+                    <path fill="#fff" d="M0 0H48V48H0z"></path>
+                  </clipPath>
+                </defs>
+              </svg>
+              <p className='font-sora font-[600] text-[14px] leading-[17px]'>Customer Report</p>
+            </div>
+          </Link>
           <div className='h-[142px] w-[142px] flex flex-col justify-center items-center gap-3 bg-white rounded-[8px] hover:shadow-md cursor-pointer transition-all duration-300'>
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48"            >
               <g clipPath="url(#clip0_327_1)">

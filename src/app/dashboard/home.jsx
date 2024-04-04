@@ -1,110 +1,132 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const DashboardOptions = [
   {
     icon: '/icons/dashboard/z-report.svg',
     title: 'Z-Report Stat',
+    link: '/dashboard?section=z-report',
   },
   {
     icon: '/icons/dashboard/settings.svg',
     title: 'Settings',
+    link: '/dashboard?section=settings',
   },
   {
     icon: '/icons/dashboard/online_banking.svg',
     title: 'Online Banking',
+    link: '/dashboard?section=online-banking',
   },
   {
     icon: '/icons/dashboard/billing_system.svg',
     title: 'Billing System',
+    link: '',
   },
   {
     icon: '/icons/dashboard/customer_feedback.svg',
     title: 'Customer Feedback',
+    link: '/dashboard?section=customer-feedback',
   },
   {
     icon: '/icons/dashboard/customer_database.svg',
     title: 'Customer Database',
+    link: '/dashboard?section=customer-database',
   },
   {
     icon: '/icons/dashboard/check_mail.svg',
     title: 'Check Mail',
+    link: '',
   },
   {
     icon: '/icons/dashboard/user_management.svg',
     title: 'User Management',
+    link: '/dashboard?section=user-management',
   },
   {
     icon: '/icons/dashboard/drivers_screen.svg',
     title: 'Drivers Screen',
+    link: '/dashboard?section=driver-screen',
   },
   {
     icon: '/icons/dashboard/drivers_taking.svg',
     title: 'Drivers Taking',
-  },
-  {
-    icon: '/icons/dashboard/drivers_taking.svg',
-    title: 'Drivers Taking',
+    link: '/dashboard?section=driver-taking',
   },
   {
     icon: '/icons/dashboard/coupon_code.svg',
     title: 'Coupon Code',
+    link: '',
   },
   {
     icon: '/icons/dashboard/advertising_slip.svg',
     title: 'Advertising Slip',
+    link: '',
   },
   {
     icon: '/icons/dashboard/current_waiting_time.svg',
     title: 'Current Waiting Time',
+    link: '/dashboard?section=waiting-time',
   },
   {
     icon: '/icons/dashboard/edit_menu.svg',
     title: 'Edit Menu',
+    link: '/dashboard?section=edit-menu',
   },
   {
     icon: '/icons/dashboard/ban_customers.svg',
     title: 'Ban Customers',
+    link: '',
   },
   {
     icon: '/icons/dashboard/delivery_charges.svg',
     title: 'Delivery Charges',
+    link: '/dashboard?section=delivery-charges',
   },
   {
     icon: '/icons/dashboard/receipt_message.svg',
     title: 'Receipt Message',
+    link: '',
   },
   {
     icon: '/icons/dashboard/order_printer_paper.svg',
     title: 'Order Printer Paper',
+    link: '',
   },
   {
     icon: '/icons/dashboard/view_website.svg',
     title: 'View Website ',
+    link: '',
   },
   {
     icon: '/icons/dashboard/offer_banner.svg',
     title: 'Offer Banner',
+    link: '',
   },
   {
     icon: '/icons/dashboard/close_takeaway.svg',
     title: 'Close Takeaway',
+    link: '',
   },
   {
     icon: '/icons/dashboard/report_problem.svg',
     title: 'Report Problem',
+    link: '/dashboard?section=report-issue',
   },
   {
     icon: '/icons/dashboard/internet_speed_test.svg',
     title: 'Internet Speed Test',
+    link: '',
   },
   {
     icon: '/icons/dashboard/table_order.svg',
     title: 'Table Order',
+    link: '/dashboard?section=table-order',
   },
   {
     icon: '/icons/dashboard/logout.svg',
     title: 'Logout',
+    link: '',
   },
 ]
 
@@ -137,17 +159,21 @@ export default function Home({ setShowFilter }) {
           </div>
         </div>
         {/* Main Content */}
-        <div className={`mt-[20px] px-[50px] pb-[60px] flex flex-wrap gap-[30px]`}>
-          {DashboardOptions.map((data, id) => {
-            return (
-              <div className='h-[142px] w-[142px] flex flex-col justify-center items-center gap-3 bg-white rounded-[8px] hover:shadow-md cursor-pointer transition-all duration-300 p-[10px]'
-                key={id}
-              >
-                <Image src={data.icon} height={48} width={48} alt='icon' />
-                <p className='font-sora font-[600] text-[14px] leading-[17px] text-center'>{data.title}</p>
-              </div>
-            )
-          })}
+        <div className='w-full flex justify-center'>
+          <div className={`mt-[20px] px-[50px] pb-[60px] flex flex-wrap gap-[30px]`}>
+            {DashboardOptions.map((data, id) => {
+              return (
+                <Link key={id} href={data.link}>
+                  <div className='h-[142px] w-[142px] flex flex-col justify-center items-center gap-3 bg-white rounded-[8px] hover:shadow-md cursor-pointer transition-all duration-300 p-[10px]'
+
+                  >
+                    <Image src={data.icon} height={48} width={48} alt='icon' />
+                    <p className='font-sora font-[600] text-[14px] leading-[17px] text-center'>{data.title}</p>
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
         </div>
       </div>
     </div>

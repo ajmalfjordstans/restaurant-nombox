@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { Card } from "@material-tailwind/react";
-export default function Customer() {
+export default function Customer({ setShowIconDrawer, showIconDrawer }) {
   const TABLE_HEAD = ["Name", "Email", "Phone", "Address", 'Issues Report', 'Status'];
   const TABLE_ROWS = [
     {
@@ -87,8 +87,23 @@ export default function Customer() {
 
   ];
   return (
-    <div className=' h-[100vh] w-full overflow-y-scroll'>
-      <div className='flex items-center gap-3 fixed top-0 py-[15px] px-[50px] bg-base w-full z-[200]'>
+    <div className='h-[100vh] w-full overflow-y-scroll'>
+      <div className={`flex items-center gap-3 fixed top-0 py-[15px] px-[20px] lg:px-[50px] bg-base w-full z-[200] ${showIconDrawer ? "translate-x-[100px]" : ""} lg:translate-x-[0px] transition-all duration-300`}>
+        <div className='lg:hidden'>
+          {showIconDrawer ?
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+              onClick={() => setShowIconDrawer(false)}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+            :
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+              onClick={() => setShowIconDrawer(true)}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+            </svg>
+          }
+        </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="48"
@@ -112,7 +127,7 @@ export default function Customer() {
         </svg>
         <p className='font-sora font-[600] text-[14px] leading-[17px]'>Customer</p>
       </div>
-      <div className='mt-[110px] px-[50px] pb-[30px] overflow-y-scroll'>
+      <div className='mt-[110px] px-[20px] lg:px-[50px] pb-[30px] overflow-y-scroll'>
         <Card className="h-full w-full overflow-scroll">
           <table className="w-full min-w-max table-auto text-left font-[700] text-[18px]">
             <thead className=''>

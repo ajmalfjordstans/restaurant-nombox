@@ -2,9 +2,9 @@
 import Link from 'next/link'
 import React from 'react'
 
-export default function SideMenu({ active }) {
+export default function SideMenu({ active, showIconDrawer }) {
   return (
-    <div className='w-[100px] h-[100vh] bg-primary flex flex-col justify-around'>
+    <div className={`w-[100px] h-[100vh] ${showIconDrawer ? "" : 'hidden'} fixed lg:relative bg-primary flex flex-col justify-around transition-all duration-300 z-[300]`}>
       <div>
         {/* Report */}
         <Link href="/super-admin?section=report">

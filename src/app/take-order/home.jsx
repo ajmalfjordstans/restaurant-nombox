@@ -11,32 +11,32 @@ const category = {
     {
       name: 'Category 1',
       bg: '#07074D',
-      icon:'/icons/dish.svg'
+      icon: '/icons/dish.svg'
     },
     {
       name: 'Category 1',
       bg: '#FF4BAC',
-      icon:'/icons/dish.svg'
+      icon: '/icons/dish.svg'
     },
     {
       name: 'Category 1',
       bg: '#4E2DD8',
-      icon:'/icons/dish.svg'
+      icon: '/icons/dish.svg'
     },
     {
       name: 'Category 1',
       bg: '#FF4BAC',
-      icon:'/icons/dish.svg'
+      icon: '/icons/dish.svg'
     },
     {
       name: 'Category 1',
       bg: '#07074D',
-      icon:'/icons/dish.svg'
+      icon: '/icons/dish.svg'
     },
     {
       name: 'Category 1',
       bg: '#4E2DD8',
-      icon:'/icons/dish.svg'
+      icon: '/icons/dish.svg'
     },
   ]
 }
@@ -46,32 +46,32 @@ const subcategory = {
     {
       name: 'Category 1',
       bg: '#FF4BAC',
-      icon:'/icons/dish.svg'
+      icon: '/icons/dish.svg'
     },
     {
       name: 'Category 1',
       bg: '#4E2DD8',
-      icon:'/icons/dish.svg'
+      icon: '/icons/dish.svg'
     },
     {
       name: 'Category 1',
       bg: '#07074D',
-      icon:'/icons/dish.svg'
+      icon: '/icons/dish.svg'
     },
     {
       name: 'Category 1',
       bg: '#FF4BAC',
-      icon:'/icons/dish.svg'
+      icon: '/icons/dish.svg'
     },
     {
       name: 'Category 1',
       bg: '#4E2DD8',
-      icon:'/icons/dish.svg'
+      icon: '/icons/dish.svg'
     },
     {
       name: 'Category 1',
       bg: '#07074D',
-      icon:'/icons/dish.svg'
+      icon: '/icons/dish.svg'
     },
   ]
 }
@@ -81,42 +81,57 @@ const items = {
     {
       name: 'Category 1',
       bg: '#07074D',
-      icon:'/icons/dish.svg'
+      icon: '/icons/dish.svg'
     },
     {
       name: 'Category 1',
       bg: '#FF4BAC',
-      icon:'/icons/dish.svg'
+      icon: '/icons/dish.svg'
     },
     {
       name: 'Category 1',
       bg: '#4E2DD8',
-      icon:'/icons/dish.svg'
+      icon: '/icons/dish.svg'
     },
     {
       name: 'Category 1',
       bg: '#FF4BAC',
-      icon:'/icons/dish.svg'
+      icon: '/icons/dish.svg'
     },
     {
       name: 'Category 1',
       bg: '#4E2DD8',
-      icon:'/icons/dish.svg'
+      icon: '/icons/dish.svg'
     },
     {
       name: 'Category 1',
       bg: '#07074D',
-      icon:'/icons/dish.svg'
+      icon: '/icons/dish.svg'
     },
   ]
 }
 
-export default function Home({ setShowFilter }) {
+export default function Home({ setShowFilter, setShowIconDrawer, showIconDrawer }) {
   return (
     <div className='overflow-hidden h-[100vh] w-full overflow-y-scroll flex'>
       <div className={`w-[100%]`}>
-        <div className='flex justify-between py-[15px] px-[50px]  bg-base w-full z-[200] h-[15vh] sticky top-0'>
-          <div className='flex items-center gap-5 '>
+        <div className='flex flex-wrap gap-4 justify-between py-[15px] px-[20px] lg:px-[50px]  bg-base w-full z-[200] h-[15vh] sticky top-0'>
+          <div className={`flex items-center gap-5  ${showIconDrawer ? "translate-x-[100px]" : ""} lg:translate-x-[0px] transition-all duration-300`}>
+            <div className='lg:hidden'>
+              {showIconDrawer ?
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+                  onClick={() => setShowIconDrawer(false)}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+                :
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+                  onClick={() => setShowIconDrawer(true)}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                </svg>
+              }
+            </div>
             <svg
               xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="none" viewBox="0 0 55 55"
             >
@@ -130,12 +145,15 @@ export default function Home({ setShowFilter }) {
             <p className='font-sora font-[600] text-[14px] leading-[17px]'>Take Order</p>
           </div>
           <div className='flex items-center gap-10'>
-            <div className='bg-[#F1EDED] rounded-[10px] overflow-hidden flex gap-4 items-center'>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 ml-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-              </svg>
-              <input type="text" className='py-[16px] bg-inherit outline-none' placeholder='Search Item' />
+            <div className='hidden lg:block'>
+              <div className='bg-[#F1EDED] rounded-[10px] overflow-hidden flex gap-4 items-center '>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 ml-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
+                <input type="text" className='py-[16px] bg-inherit outline-none' placeholder='Search Item' />
+              </div>
             </div>
+
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer z-[200]"
               onClick={() => {
                 setShowFilter(true)
@@ -148,7 +166,15 @@ export default function Home({ setShowFilter }) {
 
 
         {/* Main Content */}
-        <div className={`mt-[20px] px-[50px] pb-[60px] flex flex-col gap-[30px]`}>
+        <div className={`mt-[20px] px-[20px] lg:px-[50px] pb-[60px] flex flex-col gap-[30px]`}>
+          <div className='lg:hidden block'>
+            <div className='bg-[#F1EDED] rounded-[10px] overflow-hidden flex gap-4 items-center '>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 ml-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+              </svg>
+              <input type="text" className='py-[16px] bg-inherit outline-none' placeholder='Search Item' />
+            </div>
+          </div>
           <Slider data={category} />
           <Slider data={subcategory} />
           <Slider data={items} />

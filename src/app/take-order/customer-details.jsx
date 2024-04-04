@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CustomerForm from './customer-form';
 import { Button, Radio } from "@material-tailwind/react";
 import Image from 'next/image';
@@ -119,7 +119,7 @@ export function RenderPage({ formData, setFormData, setShowPage, showPage, setSh
   }
 }
 
-export default function CustomerDetails({ setShowFilter, setShowDrawer }) {
+export default function CustomerDetails({ setShowFilter, setShowDrawer, setShowIconDrawer, showIconDrawer }) {
   const [formData, setFormData] = useState({
     name: 'Test',
     phone: '9876543210',
@@ -132,13 +132,30 @@ export default function CustomerDetails({ setShowFilter, setShowDrawer }) {
   })
 
   const [showPage, setShowPage] = useState(1)
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [showPage])
   // console.log(formData);
   return (
     <div className='overflow-hidden h-[100vh] w-full overflow-y-scroll flex'>
       <div className={`w-[100%]`}>
-        <div className='flex justify-between py-[15px] px-[50px]  bg-base w-full z-[200] h-[15vh] sticky top-0'>
-          <div className='flex items-center gap-5 '>
+        <div className='flex justify-between py-[15px] px-[20px] lg:px-[50px]  bg-base w-full z-[200] h-[15vh] sticky top-0'>
+          <div className={`flex items-center gap-5 ${showIconDrawer ? "translate-x-[100px]" : ""} lg:translate-x-[0px] transition-all duration-300`}>
+            <div className='lg:hidden'>
+              {showIconDrawer ?
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+                  onClick={() => setShowIconDrawer(false)}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+                :
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+                  onClick={() => setShowIconDrawer(true)}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                </svg>
+              }
+            </div>
             <svg
               xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="none" viewBox="0 0 55 55"
             >
@@ -165,9 +182,8 @@ export default function CustomerDetails({ setShowFilter, setShowDrawer }) {
 
 
         {/* Main Content */}
-        <div className={`mt-[20px] px-[50px] pb-[60px] flex flex-col gap-[30px]`}>
+        <div className={`mt-[20px] px-[20px] lg:px-[50px] pb-[60px] flex flex-col gap-[30px]`}>
           <div className='bg-white rounded-[20px] p-[40px] font-[700] text-[20px] leading-[23px]'>
-
             <RenderPage formData={formData} setFormData={setFormData} setShowPage={setShowPage} showPage={showPage} setShowDrawer={setShowDrawer} />
           </div >
         </div >

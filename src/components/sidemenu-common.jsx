@@ -2,14 +2,14 @@
 import Link from 'next/link'
 import React from 'react'
 
-export default function SideMenuCommon({ active }) {
+export default function SideMenuCommon({ active, showIconDrawer }) {
+  console.log(showIconDrawer);
   return (
-    <div className='w-[100px] h-[100vh] bg-primary flex flex-col justify-around'>
+    <div className={`w-[100px] h-[100vh] bg-primary flex flex-col justify-around ${showIconDrawer ? "" : 'hidden'} fixed lg:relative z-[300]`}>
       <div>
-
         {/* Settings */}
-        <Link href="/take-order?section=settings">
-          <div className={`flex flex-col justify-center items-center cursor-pointer p-[32px] transition-all duration-100 ${active === 'settings' ? 'bg-[#FFFFFF] bg-opacity-20 border-l-[5px] border-third' : ''}`}
+        <Link href="/dashboard">
+          <div className={`flex flex-col justify-center items-center cursor-pointer p-[32px] transition-all duration-100 ${active === 'settings' ? 'bg-[#FFFFFF] bg-opacity-20 border-l-[5px] border-third' : ''} `}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="36" fill="none" viewBox="0 0 36 36"
             >

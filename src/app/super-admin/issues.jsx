@@ -48,12 +48,27 @@ export function Card({ data }) {
   )
 }
 
-export default function Issues({ setShowFilter }) {
+export default function Issues({ setShowFilter, setShowIconDrawer, showIconDrawer }) {
   return (
     <div className='overflow-hidden h-[100vh] w-full overflow-y-scroll flex'>
       <div className={`w-[100%]`}>
-        <div className='flex justify-between py-[15px] px-[50px]  bg-base w-full z-[200] h-[15vh] sticky top-0'>
+        <div className={`flex justify-between py-[15px] px-[20px] lg:px-[50px] bg-base w-full z-[200] h-[15vh] sticky top-0 ${showIconDrawer ? "translate-x-[100px]" : ""} lg:translate-x-[0px] transition-all duration-300`}>
           <div className='flex items-center gap-5 '>
+            <div className='lg:hidden'>
+              {showIconDrawer ?
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+                  onClick={() => setShowIconDrawer(false)}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+                :
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+                  onClick={() => setShowIconDrawer(true)}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                </svg>
+              }
+            </div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="48"
@@ -94,7 +109,7 @@ export default function Issues({ setShowFilter }) {
             </svg>
           </div>
         </div>
-        <div className='mt-[20px] px-[50px] flex flex-col gap-[12px]'>
+        <div className='mt-[20px] px-[20px] lg:px-[50px] flex flex-col gap-[12px]'>
           <Card />
           <Card />
           <Card />
@@ -105,30 +120,6 @@ export default function Issues({ setShowFilter }) {
           <Card />
         </div>
       </div>
-      {/* <div className={`${showFilter ? 'w-[533px] bg-white block' : 'translate-x-[100%] w-0'} h-[100dvh] z-[300] transition-all duration-300 p-[30px]`}>
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer"
-            onClick={() => { setShowFilter(false) }}
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-          </svg>
-
-          <div className='flex flex-col mt-[80px]'>
-            <p className='font-sora font-[600] text-[14px] leading-[17px] text-primary'>Filter by Date</p>
-            <DatePicker
-              defaultValue={date}
-              views={['year', 'month', 'day']}
-              onChange={(newDate) => setDate(newDate)}
-              className='mt-[15px]'
-            // minDate={dayjs(new Date())}
-            />
-            <Button
-              className='bg-third rounded-[10px] mt-[20px]'
-              onClick={() => alert(date)}
-            >Search</Button>
-          </div>
-        </div>
-      </div> */}
     </div>
   )
 }

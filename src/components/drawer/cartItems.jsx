@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { Button } from "@material-tailwind/react";
+import Link from 'next/link';
 
 const TABLE_HEAD = ["Items", "Qty", "Price", ""];
 const TABLE_ROWS = [
@@ -35,7 +36,7 @@ const TABLE_ROWS = [
     price: 20,
   },
 ];
-export default function CartItems() {
+export default function CartItems({ setShowFilter }) {
   const [rows, setRows] = useState(TABLE_ROWS)
   const handleQtyIncrement = (id) => {
     setRows(prevRows => prevRows.map(item => {
@@ -59,7 +60,7 @@ export default function CartItems() {
   };
   return (
     <div className='flex flex-col'>
-      <p className='font-[600] text-[25px] leading-[30px] ml-[30px]'>Cart Items - (7)</p>
+      <p className='font-[600] text-[25px] leading-[30px] m-[30px]'>Cart Items - (7)</p>
       <table className="w-full min-w-max table-auto text-left font-[700] text-[16px] font-sora">
         <thead className=''>
           <tr>
@@ -76,7 +77,7 @@ export default function CartItems() {
         </thead>
         <tbody>
           {rows?.map(({ items, quantity, price, id }, index) => (
-            <tr key={index} className="even:bg-blue-gray-50/50">
+            <tr key={items} className="even:bg-blue-gray-50/50">
               <td className="p-4 border-[1px] border-[#DDDDDD]">
                 <>
                   <p className="">
@@ -156,9 +157,14 @@ export default function CartItems() {
           </tr>
         </table>
       </div>
-      <Button
-        className="bg-primary m-[30px]"
-      >Checkout</Button>
+      <div className='flex justify-end'>
+        <Link href="/take-order?section=customer-details" >
+          <Button
+            className="bg-primary m-[30px]"
+            onClick={() => { setShowFilter(false) }}
+          >Checkout</Button>
+        </Link>
+      </div>
     </div>
   )
 }
