@@ -70,8 +70,8 @@ export default function CardTwo() {
         </div>
       </div>
       {showColorPicker &&
-        <div className='absolute top-0 right-0 h-[100vh] w-[100vw] flex justify-center items-center z-[500]'>
-          <div className='rounded-[10px] bg-white p-[30px] shadow-md text-[20px] font-raleway font-[700] leading-[23px] w-[60%] max-w-[600px]'>
+        <div className='absolute top-0 right-0 h-[100vh] w-[100vw] flex justify-center items-center z-[500] p-[5%]'>
+          <div className='rounded-[10px] bg-white p-[15px] md:p-[30px] shadow-md text-[20px] font-raleway font-[700] leading-[23px] w-[100%] max-w-[600px]'>
             <div className='flex w-full justify-between '>
               <p className='uppercase'>{currentColor.title}</p>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer "

@@ -21,8 +21,8 @@ const incrementInput = [
 
 export default function Print() {
   return (
-    <div className='grid grid-cols-3 gap-3'>
-      <div className='w-full rounded-[20px] p-[30px] bg-white flex flex-col gap-3'>
+    <div className='grid  lg:grid-cols-3 gap-3'>
+      <div className='w-full rounded-[20px] p-[30px] bg-white flex flex-col gap-3 col-span-2 lg:col-span-1'>
         <Invoice />
       </div>
       <div className='col-span-2 font-[700] flex flex-col gap-3'>

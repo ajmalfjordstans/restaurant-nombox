@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function TableOrderDrawer() {
   return (
-    <div className='p-[30px] font-[600]'>
+    <div className='p-[30px] font-[600] w-[90vw]'>
       <div className='flex flex-col gap-3'>
         <Select label="Category" className='bg-base outline-none'>
           <Option>Material Tailwind HTML</Option>

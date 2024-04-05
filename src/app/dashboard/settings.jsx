@@ -27,13 +27,28 @@ export function RenderTab({ tab }) {
 
 }
 
-export default function Settings() {
+export default function Settings({ setShowIconDrawer, showIconDrawer }) {
   const [tab, setTab] = useState('general')
   return (
     <div className='overflow-hidden h-[100vh] w-full overflow-y-scroll flex'>
       <div className={`w-[100%]`}>
-        <div className='flex justify-between py-[15px] px-[50px]  bg-base w-full z-[200] h-[15vh] sticky top-0'>
-          <div className='flex items-center gap-5 '>
+        <div className='flex justify-between py-[15px] px-[20px] lg:px-[50px] bg-base w-full z-[200] md:h-[15vh] fixed top-0'>
+          <div className={`flex items-center gap-5  ${showIconDrawer ? "translate-x-[100px]" : ""} lg:translate-x-[0px] transition-all duration-300`}>
+            <div className='lg:hidden'>
+              {showIconDrawer ?
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+                  onClick={() => setShowIconDrawer(false)}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+                :
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+                  onClick={() => setShowIconDrawer(true)}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                </svg>
+              }
+            </div>
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48"            >
               <g clipPath="url(#clip0_200_173)">
                 <path
@@ -70,13 +85,14 @@ export default function Settings() {
 
 
         {/* Main Content */}
-        <div className={`mt-[20px] px-[50px] pb-[60px] flex flex-col gap-[30px]`}>
-          <div className='grid grid-cols-5 gap-2 border-b-[1px] border-black'>
+        <div className={`mt-[100px] px-[20px] lg:px-[50px] pb-[60px] flex flex-col gap-[30px]`}>
+          {/* <div className='grid grid-cols-5 gap-2 border-b-[1px] border-black'> */}
+          <div className='flex overflow-scroll gap-2 border-b-[1px] border-black'>
             {TABLE_HEAD.map((data, id) => {
               return (
-                <div className={`${tab === data ? "bg-second text-white" : "bg-[#E7E2E2] text-black"} capitalize  text-center rounded-t-[20px] py-[25px] font-[700] cursor-pointer transition-all duration-300`}
+                <div className={`${tab === data ? "bg-second text-white" : "bg-[#E7E2E2] text-black"} capitalize text-center rounded-t-[20px] py-[25px] font-[700] cursor-pointer transition-all duration-300 min-w-[130px] w-full`}
                   onClick={() => setTab(data)}
-                  key={id}
+                  key={id}    
                 >
                   {data}
                 </div>

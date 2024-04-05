@@ -26,7 +26,8 @@ import TableOrder from './table-order'
 import DeliveryCharges from './delivery-charges'
 import DeliveryChargesDrawer from '@/components/drawer/delivery-charges'
 import Settings from './settings'
-function RenderPage({ setActive, setShowFilter, setShowDrawer }) {
+
+function RenderPage({ setActive, setShowFilter, setShowDrawer, setShowIconDrawer, showIconDrawer }) {
   const section = useSearchParams().get('section');
 
   useEffect(() => {
@@ -83,33 +84,33 @@ function RenderPage({ setActive, setShowFilter, setShowDrawer }) {
   // Render the appropriate component based on the section
   switch (section) {
     case 'edit-menu':
-      return <EditMenu setShowFilter={setShowFilter} />;
+      return <EditMenu setShowFilter={setShowFilter} setShowIconDrawer={setShowIconDrawer} showIconDrawer={showIconDrawer}/>;
     case 'z-report':
-      return <ZReport setShowFilter={setShowFilter} />;
+      return <ZReport setShowFilter={setShowFilter} setShowIconDrawer={setShowIconDrawer} showIconDrawer={showIconDrawer}/>;
     case 'waiting-time':
-      return <WaitingTime setShowFilter={setShowFilter} />;
+      return <WaitingTime setShowFilter={setShowFilter} setShowIconDrawer={setShowIconDrawer} showIconDrawer={showIconDrawer}/>;
     case 'online-banking':
-      return <OnlineBanking setShowFilter={setShowFilter} />;
+      return <OnlineBanking setShowFilter={setShowFilter} setShowIconDrawer={setShowIconDrawer} showIconDrawer={showIconDrawer}/>;
     case 'customer-feedback':
-      return <CustomerFeedback setShowFilter={setShowFilter} />;
+      return <CustomerFeedback setShowFilter={setShowFilter} setShowIconDrawer={setShowIconDrawer} showIconDrawer={showIconDrawer}/>;
     case 'customer-database':
-      return <CustomerDatabase setShowFilter={setShowFilter} />;
+      return <CustomerDatabase setShowFilter={setShowFilter} setShowIconDrawer={setShowIconDrawer} showIconDrawer={showIconDrawer}/>;
     case 'user-management':
-      return <UserManagement setShowFilter={setShowFilter} />;
+      return <UserManagement setShowFilter={setShowFilter} setShowIconDrawer={setShowIconDrawer} showIconDrawer={showIconDrawer}/>;
     case 'driver-screen':
-      return <DriverScreen setShowFilter={setShowFilter} />;
+      return <DriverScreen setShowFilter={setShowFilter} setShowIconDrawer={setShowIconDrawer} showIconDrawer={showIconDrawer}/>;
     case 'driver-taking':
-      return <DriverTaking setShowFilter={setShowFilter} />;
+      return <DriverTaking setShowFilter={setShowFilter} setShowIconDrawer={setShowIconDrawer} showIconDrawer={showIconDrawer}/>;
     case 'report-issue':
-      return <ReportIssue setShowFilter={setShowFilter} />;
+      return <ReportIssue setShowFilter={setShowFilter} setShowIconDrawer={setShowIconDrawer} showIconDrawer={showIconDrawer}/>;
     case 'table-order':
-      return <TableOrder setShowFilter={setShowFilter} />;
+      return <TableOrder setShowFilter={setShowFilter} setShowIconDrawer={setShowIconDrawer} showIconDrawer={showIconDrawer}/>;
     case 'delivery-charges':
-      return <DeliveryCharges setShowFilter={setShowFilter} />;
+      return <DeliveryCharges setShowFilter={setShowFilter} setShowIconDrawer={setShowIconDrawer} showIconDrawer={showIconDrawer}/>;
     case 'settings':
-      return <Settings setShowFilter={setShowFilter} />;
+      return <Settings setShowFilter={setShowFilter} setShowIconDrawer={setShowIconDrawer} showIconDrawer={showIconDrawer}/>;
     default:
-      return <Home setShowFilter={setShowFilter} />;
+      return <Home setShowFilter={setShowFilter} setShowIconDrawer={setShowIconDrawer} showIconDrawer={showIconDrawer}/>;
   }
 }
 
@@ -167,7 +168,7 @@ function RenderDrawer({ showDrawer }) {
   }
   else if (showDrawer === 'delivery-charges') {
     return (
-      <DeliveryChargesDrawer />
+      <DeliveryChargessDrawer />
     )
   }
   else if (showDrawer === 'settings') {
@@ -184,16 +185,36 @@ export default function Page() {
   const [active, setActive] = useState('')
   const [showFilter, setShowFilter] = useState(false) //Default True if drawer to be shown always
   const [showDrawer, setShowDrawer] = useState('cart')
+  const [showIconDrawer, setShowIconDrawer] = useState('true')
+  useEffect(() => {
+    // Function to update state based on screen size
+    const updateScreenSize = () => {
+      setShowIconDrawer(window.innerWidth < 770 ? false : true); // Example threshold for small screen
+    };
+
+    // Add event listener for window resize
+    window.addEventListener('resize', updateScreenSize);
+
+    // Initial call to update screen size state
+    updateScreenSize();
+
+    // Cleanup function to remove event listener
+    return () => {
+      window.removeEventListener('resize', updateScreenSize);
+    };
+  }, []);
   return (
     <div className='flex w-[100vw] overflow-y-hidden h-[100vh] overflow-hidden'>
-      <SideMenuCommon active={active} />
+      <SideMenuCommon active={active} showIconDrawer={showIconDrawer} />
       <Suspense fallback={<div className='w-full h-full flex justify-center items-center'>Loading...</div>}>
-        <RenderPage setActive={setActive} setShowFilter={setShowFilter} setShowDrawer={setShowDrawer} />
+        <RenderPage setActive={setActive} setShowFilter={setShowFilter} setShowDrawer={setShowDrawer} setShowIconDrawer={setShowIconDrawer} showIconDrawer={showIconDrawer} />
       </Suspense>
       {/* Right side menu */}
-      <DrawerRight showFilter={showFilter} setShowFilter={setShowFilter}>
-        <RenderDrawer showDrawer={showDrawer} setShowFilter={setShowFilter} />
-      </DrawerRight>
+      <Suspense fallback={<div className='w-full h-full flex justify-center items-center'>Loading...</div>}>
+        <DrawerRight showFilter={showFilter} setShowFilter={setShowFilter}>
+          <RenderDrawer showDrawer={showDrawer} setShowFilter={setShowFilter} />
+        </DrawerRight>
+      </Suspense>
     </div>
   )
 }

@@ -13,7 +13,7 @@ export default function DeliveryChargesDrawer() {
   })
   return (
     <>
-      <div className='p-[30px]'>
+      <div className='p-[30px] max-w-[100vw]'>
         <div className='flex flex-col mt-[30px] gap-5'>
           <div className='flex justify-between gap-1'>
             <Button className='bg-second capitalize' fullWidth >Search</Button>
@@ -43,7 +43,7 @@ export default function DeliveryChargesDrawer() {
             className='bg-third rounded-[10px] mt-[20px]'
             onClick={() => alert("")}
           >Check</Button>
-          <div className='rounded-[20px] overflow-hidden'>
+          <div className='rounded-[20px] overflow-hidden max-w-full'>
             <GoogleMapComponent />
           </div>
         </div>
@@ -54,7 +54,7 @@ export default function DeliveryChargesDrawer() {
             <div className='flex w-full justify-between '>
               <p className='uppercase'>Add post code</p>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer "
-                onClick={() => { setShowOption(false) }}
+                onClick={() => { setShowAdd(false) }}
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
               </svg>

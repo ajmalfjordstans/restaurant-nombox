@@ -38,71 +38,71 @@ export default function CustomerDatabaseDrawer() {
         </div>
       </div>
       {showAdd &&
-        <div className='absolute top-0 right-0 h-[100vh] w-[100vw] flex justify-center items-center z-[500]'>
-          <div className='rounded-[10px] bg-white p-[30px] shadow-md text-[20px] font-raleway font-[700] leading-[23px] w-[60%] max-w-[600px]'>
+        <div className='absolute top-0 right-0 h-[100vh] w-[100vw] flex justify-center items-center z-[500] p-[5%]'>
+          <div className='rounded-[10px] bg-white p-[30px] shadow-md text-[14px] lg:text-[20px] font-raleway font-[700] leading-[23px] w-[100%] max-w-[600px] overflow-y-scroll'>
             <div className='flex w-full justify-between '>
               <p className='uppercase'>Add Customer Database</p>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer "
-                onClick={() => { setShowOption(false) }}
+                onClick={() => { setShowAdd(false) }}
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
               </svg>
             </div>
             <div className='flex flex-col gap-5 mt-[20px]'>
-              <div className='flex flex-col gap-2'>
-                <p className='font-raleway font-[700] text-[20px] leading-[24px]'>Name</p>
-                <input type="text" className='py-[10px] px-[15px] rounded-[10px] bg-base outline-none w-full'
+              <div className='flex flex-col gap-[4px]'>
+                <p className='font-raleway'>Name</p>
+                <input type="text" className='py-[5px] lg:py-[10px] px-[15px] rounded-[10px] bg-base outline-none w-full'
                   onClick={(e) => setCustomerFormData({
                     ...customerFormData,
                     name: e.target.value()
                   })}
                 />
               </div>
-              <div className='flex flex-col gap-2'>
-                <p className='font-raleway font-[700] text-[20px] leading-[24px]'>Phone</p>
-                <input type="text" className='py-[10px] px-[15px] rounded-[10px] bg-base outline-none w-full'
+              <div className='flex flex-col gap-[4px]'>
+                <p className='font-raleway'>Phone</p>
+                <input type="text" className='py-[5px] lg:py-[10px] px-[15px] rounded-[10px] bg-base outline-none w-full'
                   onClick={(e) => setCustomerFormData({
                     ...customerFormData,
                     phone: e.target.value()
                   })}
                 />
               </div>
-              <div className='flex flex-col gap-2'>
-                <p className='font-raleway font-[700] text-[20px] leading-[24px]'>Email</p>
-                <input type="text" className='py-[10px] px-[15px] rounded-[10px] bg-base outline-none w-full'
+              <div className='flex flex-col gap-[4px]'>
+                <p className='font-raleway'>Email</p>
+                <input type="text" className='py-[5px] lg:py-[10px] px-[15px] rounded-[10px] bg-base outline-none w-full'
                   onClick={(e) => setCustomerFormData({
                     ...customerFormData,
                     email: e.target.value()
                   })}
                 />
               </div>
-              <div className='flex flex-col gap-2'>
-                <p className='font-raleway font-[700] text-[20px] leading-[24px]'>Postcode</p>
-                <input type="text" className='py-[10px] px-[15px] rounded-[10px] bg-base outline-none w-full'
+              <div className='flex flex-col gap-[4px]'>
+                <p className='font-raleway'>Postcode</p>
+                <input type="text" className='py-[5px] lg:py-[10px] px-[15px] rounded-[10px] bg-base outline-none w-full'
                   onClick={(e) => setCustomerFormData({
                     ...customerFormData,
                     postcode: e.target.value()
                   })}
                 />
               </div>
-              <div className='flex flex-col gap-2'>
-                <p className='font-raleway font-[700] text-[20px] leading-[24px]'>Address</p>
-                <input type="text" className='py-[10px] px-[15px] rounded-[10px] bg-base outline-none w-full'
+              <div className='flex flex-col gap-[4px]'>
+                <p className='font-raleway'>Address</p>
+                <input type="text" className='py-[5px] lg:py-[10px] px-[15px] rounded-[10px] bg-base outline-none w-full'
                   onClick={(e) => setCustomerFormData({
                     ...customerFormData,
                     address: e.target.value()
                   })}
                 />
               </div>
-              <div className='flex justify-start'>
+              <div className='flex justify-star[4px]'>
                 <div className='flex gap-3'>
-                  <input type="radio" className='py-[10px] px-[15px] rounded-[10px] bg-base outline-none w-full'
+                  <input type="radio" className='py-[5px] lg:py-[10px] px-[15px] rounded-[10px] bg-base outline-none w-full'
                     onClick={(e) => setCustomerFormData({
                       ...customerFormData,
                       subscribe: e.target.value()
                     })}
                   />
-                  <p className='font-raleway font-[700] text-[20px] leading-[24px]'>Subscribed</p>
+                  <p className='font-raleway'>Subscribed</p>
                 </div>
               </div>
               <div className='flex justify-end'>

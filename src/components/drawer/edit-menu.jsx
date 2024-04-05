@@ -16,7 +16,7 @@ export default function EditMenuDrawer() {
     console.log(days);
   }
   return (
-    <div className='p-[30px] font-sora font-[600] text-[14px] leading-[17px] text-primary'>
+    <div className='p-[30px] font-sora font-[600] text-[14px] leading-[17px] text-primary w-full'>
       <p className='font-[700] text-[38px] text-center'>LOGO</p>
       <div>
         <p className='mt-[20px]'>Add Category</p>

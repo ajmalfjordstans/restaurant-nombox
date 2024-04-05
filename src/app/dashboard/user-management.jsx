@@ -1,6 +1,7 @@
+import { Card } from '@material-tailwind/react';
 import React from 'react'
 
-export default function UserManagement({ setShowFilter }) {
+export default function UserManagement({ setShowFilter, setShowIconDrawer, showIconDrawer }) {
   const TABLE_HEAD = ["Restaurant Name", "Phone", "Pincode", "Type", ""];
   const TABLE_ROWS = [
     {
@@ -32,8 +33,23 @@ export default function UserManagement({ setShowFilter }) {
   return (
     <div className='overflow-hidden h-[100vh] w-full overflow-y-scroll flex'>
       <div className={`w-[100%]`}>
-        <div className='flex justify-between py-[15px] px-[50px]  bg-base w-full z-[200] h-[15vh] sticky top-0'>
-          <div className='flex items-center gap-5 '>
+        <div className='flex justify-between py-[15px] px-[20px] lg:px-[50px] bg-base w-full z-[200] md:h-[15vh] fixed top-0'>
+          <div className={`flex items-center gap-5  ${showIconDrawer ? "translate-x-[100px]" : ""} lg:translate-x-[0px] transition-all duration-300`}>
+            <div className='lg:hidden'>
+              {showIconDrawer ?
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+                  onClick={() => setShowIconDrawer(false)}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+                :
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+                  onClick={() => setShowIconDrawer(true)}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                </svg>
+              }
+            </div>
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48"    >
               <path
                 fill="#C2D9EF"
@@ -64,67 +80,69 @@ export default function UserManagement({ setShowFilter }) {
 
 
         {/* Main Content */}
-        <div className={`mt-[20px] px-[50px] pb-[60px] flex flex-col gap-[30px]`}>
-          <table className="w-full min-w-max table-auto text-left font-[700] text-[18px] rounded-[10px] overflow-hidden">
-            <thead className=''>
-              <tr>
-                {TABLE_HEAD.map((head) => (
-                  <th key={head} className="border-b bg-second p-4 border-[1px] border-[#DDDDDD] ">
-                    <p
-                      className=" leading-[22px] text-white"
-                    >
-                      {head}
-                    </p>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {TABLE_ROWS.map(({ name, phone, postcode, type }, index) => (
-                <tr key={index} className="even:bg-blue-gray-50/50">
-                  <td className="p-4 border-[1px] border-[#DDDDDD]">
-                    <>
-                      <p className="">
-                        {name}
+        <div className={`mt-[100px] px-[20px] lg:px-[50px] pb-[60px] flex flex-col gap-[30px]`}>
+          <Card className='w-full h-full overflow-scroll'>
+            <table className="w-full min-w-max table-auto text-left font-[700] text-[18px] rounded-[10px] overflow-hidden">
+              <thead className=''>
+                <tr>
+                  {TABLE_HEAD.map((head) => (
+                    <th key={head} className="border-b bg-second p-4 border-[1px] border-[#DDDDDD] ">
+                      <p
+                        className=" leading-[22px] text-white"
+                      >
+                        {head}
                       </p>
-                    </>
-                  </td>
-                  <td className="p-4 border-[1px] border-[#DDDDDD]">
-                    <>
-                      <p className="">
-                        {phone}
-                      </p>
-                    </>
-                  </td>
-                  <td className="p-4 border-[1px] border-[#DDDDDD]">
-                    <>
-                      <p className="">
-                        {postcode}
-                      </p>
-                    </>
-                  </td>
-                  <td className="p-4 border-[1px] border-[#DDDDDD]">
-                    <>
-                      <p className="capitalize">
-                        {type}
-                      </p>
-                    </>
-                  </td>
-                  <td className="p-4 border-[1px] border-[#DDDDDD]">
-                    <div className='flex gap-2'>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
-                      </svg>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
-                      </svg>
-
-                    </div>
-                  </td>
+                    </th>
+                  ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {TABLE_ROWS.map(({ name, phone, postcode, type }, index) => (
+                  <tr key={index} className="even:bg-blue-gray-50/50">
+                    <td className="p-4 border-[1px] border-[#DDDDDD]">
+                      <>
+                        <p className="">
+                          {name}
+                        </p>
+                      </>
+                    </td>
+                    <td className="p-4 border-[1px] border-[#DDDDDD]">
+                      <>
+                        <p className="">
+                          {phone}
+                        </p>
+                      </>
+                    </td>
+                    <td className="p-4 border-[1px] border-[#DDDDDD]">
+                      <>
+                        <p className="">
+                          {postcode}
+                        </p>
+                      </>
+                    </td>
+                    <td className="p-4 border-[1px] border-[#DDDDDD]">
+                      <>
+                        <p className="capitalize">
+                          {type}
+                        </p>
+                      </>
+                    </td>
+                    <td className="p-4 border-[1px] border-[#DDDDDD]">
+                      <div className='flex gap-2'>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                        </svg>
+
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </Card>
         </div >
       </div>
     </div>

@@ -1,6 +1,7 @@
+import { Card } from '@material-tailwind/react';
 import React from 'react'
 
-export default function CustomerDatabase({setShowFilter}) {
+export default function CustomerDatabase({ setShowFilter, setShowIconDrawer, showIconDrawer }) {
   const TABLE_HEAD = ["Name", "Phone", "Address", "Postcode", "Subscribed", "Email"];
   const TABLE_ROWS = [
     {
@@ -103,8 +104,23 @@ export default function CustomerDatabase({setShowFilter}) {
   return (
     <div className='overflow-hidden h-[100vh] w-full overflow-y-scroll flex'>
       <div className={`w-[100%]`}>
-        <div className='flex justify-between py-[15px] px-[50px]  bg-base w-full z-[200] h-[15vh] sticky top-0'>
-          <div className='flex items-center gap-5 '>
+        <div className='flex justify-between py-[15px] px-[20px] lg:px-[50px] bg-base w-full z-[200] md:h-[15vh] fixed top-0'>
+          <div className={`flex items-center gap-5  ${showIconDrawer ? "translate-x-[100px]" : ""} lg:translate-x-[0px] transition-all duration-300`}>
+            <div className='lg:hidden'>
+              {showIconDrawer ?
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+                  onClick={() => setShowIconDrawer(false)}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+                :
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
+                  onClick={() => setShowIconDrawer(true)}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                </svg>
+              }
+            </div>
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48"    >
               <g clipPath="url(#clip0_200_178)">
                 <path
@@ -141,70 +157,72 @@ export default function CustomerDatabase({setShowFilter}) {
 
 
         {/* Main Content */}
-        <div className={`mt-[20px] px-[50px] pb-[60px] flex flex-col gap-[30px]`}>
-          <table className="w-full min-w-max table-auto text-left font-[700] text-[18px] rounded-[10px] overflow-hidden">
-            <thead className=''>
-              <tr>
-                {TABLE_HEAD.map((head) => (
-                  <th key={head} className="border-b bg-second p-4 border-[1px] border-[#DDDDDD] ">
-                    <p
-                      className=" leading-[22px] text-white"
-                    >
-                      {head}
-                    </p>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {TABLE_ROWS.map(({ name, phone, address, postcode, subscribe, email }, index) => (
-                <tr key={index} className="even:bg-blue-gray-50/50">
-                  <td className="p-4 border-[1px] border-[#DDDDDD]">
-                    <>
-                      <p className="">
-                        {name}
+        <div className={`mt-[100px] px-[20px] lg:px-[50px] pb-[60px] flex flex-col gap-[30px]`}>
+          <Card className="w-full h-full overflow-scroll">
+            <table className="w-full min-w-max table-auto text-left font-[700] text-[18px] rounded-[10px] overflow-hidden">
+              <thead className=''>
+                <tr>
+                  {TABLE_HEAD.map((head) => (
+                    <th key={head} className="border-b bg-second p-4 border-[1px] border-[#DDDDDD] ">
+                      <p
+                        className=" leading-[22px] text-white"
+                      >
+                        {head}
                       </p>
-                    </>
-                  </td>
-                  <td className="p-4 border-[1px] border-[#DDDDDD]">
-                    <>
-                      <p className="">
-                        {phone}
-                      </p>
-                    </>
-                  </td>
-                  <td className="p-4 border-[1px] border-[#DDDDDD]">
-                    <>
-                      <p className="">
-                        {address}
-                      </p>
-                    </>
-                  </td>
-                  <td className="p-4 border-[1px] border-[#DDDDDD]">
-                    <>
-                      <p className="">
-                        {postcode}
-                      </p>
-                    </>
-                  </td>
-                  <td className="p-4 border-[1px] border-[#DDDDDD]">
-                    <>
-                      <p className="">
-                        {subscribe ? "Yes" : "No"}
-                      </p>
-                    </>
-                  </td>
-                  <td className="p-4 border-[1px] border-[#DDDDDD]">
-                    <>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5Z" />
-                      </svg>
-                    </>
-                  </td>
+                    </th>
+                  ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {TABLE_ROWS.map(({ name, phone, address, postcode, subscribe, email }, index) => (
+                  <tr key={index} className="even:bg-blue-gray-50/50">
+                    <td className="p-4 border-[1px] border-[#DDDDDD]">
+                      <>
+                        <p className="">
+                          {name}
+                        </p>
+                      </>
+                    </td>
+                    <td className="p-4 border-[1px] border-[#DDDDDD]">
+                      <>
+                        <p className="">
+                          {phone}
+                        </p>
+                      </>
+                    </td>
+                    <td className="p-4 border-[1px] border-[#DDDDDD]">
+                      <>
+                        <p className="">
+                          {address}
+                        </p>
+                      </>
+                    </td>
+                    <td className="p-4 border-[1px] border-[#DDDDDD]">
+                      <>
+                        <p className="">
+                          {postcode}
+                        </p>
+                      </>
+                    </td>
+                    <td className="p-4 border-[1px] border-[#DDDDDD]">
+                      <>
+                        <p className="">
+                          {subscribe ? "Yes" : "No"}
+                        </p>
+                      </>
+                    </td>
+                    <td className="p-4 border-[1px] border-[#DDDDDD]">
+                      <>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5Z" />
+                        </svg>
+                      </>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </Card>
         </div >
       </div>
     </div>
