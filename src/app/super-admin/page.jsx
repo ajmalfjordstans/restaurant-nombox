@@ -111,7 +111,7 @@ export default function Page() {
   }, []);
   return (
     <div className='flex w-[100vw] overflow-y-hidden h-[100vh] overflow-hidden'>
-      <SideMenu active={active} showIconDrawer={showIconDrawer} />
+      <SideMenu active={active} showIconDrawer={showIconDrawer} setShowIconDrawer={setShowIconDrawer}/>
       <Suspense fallback={<div className='w-full h-full flex justify-center items-center'>Loading...</div>}>
         <RenderPage setActive={setActive} setShowFilter={setShowFilter} setShowDrawer={setShowDrawer} setShowIconDrawer={setShowIconDrawer} showIconDrawer={showIconDrawer} />
       </Suspense>

@@ -103,7 +103,7 @@ export default function Page() {
   }, []);
   return (
     <div className='flex w-[100vw] overflow-y-hidden h-[100vh] overflow-hidden'>
-      <SideMenuCommon active={active} showIconDrawer={showIconDrawer} />
+      <SideMenuCommon active={active} showIconDrawer={showIconDrawer} setShowIconDrawer={setShowIconDrawer}/>
       {/* <Layout setShowFilter={setShowFilter}>
       </Layout> */}
       <Suspense fallback={<div className='w-full h-full flex justify-center items-center'>Loading...</div>}>

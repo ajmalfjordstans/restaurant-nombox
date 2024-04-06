@@ -95,7 +95,7 @@ export default function Report({ setShowFilter, setShowIconDrawer, showIconDrawe
               <p className='font-sora font-[600] text-[14px] leading-[17px]'>Z-Report Stat</p>
             </div>
             <div className='flex items-center gap-10'>
-              <div className="max-w-72 ml-[60px]">
+              <div className="max-w-72">
                 <Select label="Select Restaurant" className='bg-white'>
                   <Option>Restaurant 1</Option>
                   <Option>Restaurant 2</Option>
@@ -103,7 +103,7 @@ export default function Report({ setShowFilter, setShowIconDrawer, showIconDrawe
                   <Option>Restaurant 4</Option>
                 </Select>
               </div>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer z-[200] absolute top-5 right-5 md:relative"
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer z-[200] absolute top-5 right-5 md:relative md:top-0"
                 onClick={() => {
                   setShowFilter(true)
                 }}

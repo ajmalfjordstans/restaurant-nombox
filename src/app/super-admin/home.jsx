@@ -6,7 +6,7 @@ export default function Home() {
     <div className='flex justify-center items-center w-full font-sora'>
       <div>
         <p className='font-[600] text-[px] md:text-[30px] leading-[px] md:leading-[37px] text-center'>Super Admin Dashboard</p>
-        <div className='grid grid-cols-3 gap-4 mt-[30px]'>
+        <div className='grid grid-cols-2 md:grid-cols-3 gap-4 mt-[30px]'>
           {/* Reports */}
           <Link href="/super-admin?section=report">
             <div className='bg-white rounded-[8px] p-[30px] flex flex-col justify-center items-center gap-3 hover:shadow-md hover:scale-105 transition-all duration-300'>

@@ -41,35 +41,35 @@ export function RenderPage({ formData, setFormData, setShowPage, showPage, setSh
         </div>
         <div className='mt-[30px]'>
           <p className=''>Waiting Time</p>
-          <div className='flex flex-wrap mt-[10px] gap-3'>
-            <div className='h-[157px] w-[156px] rounded-[10px] bg-second text-white flex flex-col justify-center items-center gap-3 cursor-pointer'
+          <div className='grid grid-cols-2 md:flex flex-wrap mt-[10px] gap-3'>
+            <div className=' w-[100%] md:h-[157px] py-[10px] md:w-[156px] rounded-[10px] bg-second text-white flex flex-col justify-center items-center gap-3 cursor-pointer'
               onClick={() => { setFormData({ ...formData, waitingTime: '5 minutes' }) }}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-14 h-14">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-8 h-8 md:w-14 md:h-14">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
               <p>5 minutes</p>
             </div>
-            <div className='h-[157px] w-[156px] rounded-[10px] bg-third text-white flex flex-col justify-center items-center gap-3 cursor-pointer'
+            <div className=' w-[100%] md:h-[157px] py-[10px] md:w-[156px] rounded-[10px] bg-third text-white flex flex-col justify-center items-center gap-3 cursor-pointer'
               onClick={() => { setFormData({ ...formData, waitingTime: '10 minutes' }) }}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-14 h-14">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-8 h-8 md:w-14 md:h-14">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
               <p>10 minutes</p>
             </div>
-            <div className='h-[157px] w-[156px] rounded-[10px] bg-primary text-white flex flex-col justify-center items-center gap-3 cursor-pointer'
+            <div className=' w-[100%] md:h-[157px] py-[10px] md:w-[156px] rounded-[10px] bg-primary text-white flex flex-col justify-center items-center gap-3 cursor-pointer'
               onClick={() => { setFormData({ ...formData, waitingTime: '15 minutes' }) }}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-14 h-14">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-8 h-8 md:w-14 md:h-14">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
               <p>15 minutes</p>
             </div>
-            <div className='h-[157px] w-[156px] rounded-[10px] bg-second text-white flex flex-col justify-center items-center gap-3 cursor-pointer'
+            <div className=' w-[100%] md:h-[157px] py-[10px] md:w-[156px] rounded-[10px] bg-second text-white flex flex-col justify-center items-center gap-3 cursor-pointer'
               onClick={() => { setFormData({ ...formData, waitingTime: '20 minutes' }) }}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-14 h-14">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-8 h-8 md:w-14 md:h-14">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
               <p>20 minutes</p>
@@ -105,10 +105,10 @@ export function RenderPage({ formData, setFormData, setShowPage, showPage, setSh
     setShowDrawer('invoice')
     return (
       <div className='text-center flex flex-col items-center gap-5'>
-        <p className='font-sora font-[400] text-[30px] leading-[37px]'>Payment Done</p>
-        <p className='font-sora font-[700] text-[42px] leading-[60px]'>Successfully</p>
-        <Image src={`/images/payment_done.jpg`} height={300} width={250} alt='payment done' className='' />
-        <p className='font-[400] text-[30px] my-[15px]'>Grand Total: <span className='font-[700]'>$145</span></p>
+        <p className='font-sora font-[400] text-[24px] lg:text-[30px] leading-[37px]'>Payment Done</p>
+        <p className='font-sora font-[700] text-[28px] lg:text-[42px] leading-[60px]'>Successfully</p>
+        <Image src={`/images/payment_done.jpg`} height={150} width={70} alt='payment done' className='' />
+        <p className='font-[400] text-[24px] lg:text-[30px] my-[15px]'>Grand Total: <span className='font-[700]'>$145</span></p>
         <Button className='py-[25px]  bg-second w-[185px]'>Continue</Button>
       </div>
     )
@@ -139,8 +139,8 @@ export default function CustomerDetails({ setShowFilter, setShowDrawer, setShowI
   return (
     <div className='overflow-hidden h-[100vh] w-full overflow-y-scroll flex'>
       <div className={`w-[100%]`}>
-        <div className='flex justify-between py-[15px] px-[20px] lg:px-[50px]  bg-base w-full z-[200] md:h-[15vh] sticky top-0'>
-          <div className={`flex items-center gap-5 ${showIconDrawer ? "translate-x-[100px]" : ""} lg:translate-x-[0px] transition-all duration-300`}>
+        <div className={`flex justify-between py-[15px] px-[20px] lg:px-[50px] bg-base w-full z-[200] md:h-[15vh] sticky top-0 ${showIconDrawer ? "translate-x-[100px]" : ""} lg:translate-x-[0px] transition-all duration-300`}>
+          <div className='flex items-center gap-5 '>
             <div className='lg:hidden'>
               {showIconDrawer ?
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"

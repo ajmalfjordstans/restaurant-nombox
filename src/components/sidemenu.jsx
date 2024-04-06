@@ -1,8 +1,15 @@
 'use client'
 import Link from 'next/link'
-import React from 'react'
+import { useSearchParams } from 'next/navigation'
+import React, { useEffect } from 'react'
 
-export default function SideMenu({ active, showIconDrawer }) {
+export default function SideMenu({ active, showIconDrawer, setShowIconDrawer }) {
+  const section = useSearchParams().get('section')
+  useEffect(() => {
+    if (window.innerWidth < 770) {
+      setShowIconDrawer(false)
+    }
+  }, [section])
   return (
     <div className={`w-[100px] h-[100vh] ${showIconDrawer ? "" : 'hidden'} fixed lg:relative bg-primary flex flex-col justify-around transition-all duration-300 z-[300]`}>
       <div>

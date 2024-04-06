@@ -35,8 +35,8 @@ export default function Home() {
         </p>
       </Link>
       
-      <Link href={`/take-order?section=customer-details`}>
-        <p className='cursor-pointer'>
+      <Link href={`/take-order?section=customer-details`} className='mt-10'>
+        <p className='cursor-pointer mt-10'>
           Take Order - customer details
         </p>
       </Link>
@@ -47,7 +47,7 @@ export default function Home() {
       </Link>
 
       <Link href={`/dashboard?section=z-report`}>
-        <p className='cursor-pointer'>
+        <p className='cursor-pointer mt-10'>
           Dashboard - Z Report
         </p>
       </Link>

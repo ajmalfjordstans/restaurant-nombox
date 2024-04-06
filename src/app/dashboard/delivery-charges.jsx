@@ -256,10 +256,10 @@ export default function DeliveryCharges({ setShowFilter, setShowIconDrawer, show
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
   return (
     <div className='overflow-hidden h-[100vh] w-full overflow-y-scroll flex'>
-      <div className={`w-[100%]`}>
-        <div className='flex justify-between py-[15px] px-[20px] lg:px-[50px] bg-base w-full z-[200] md:h-[15vh] fixed top-0'>
-          <div className={`flex items-center gap-5  ${showIconDrawer ? "translate-x-[100px]" : ""} lg:translate-x-[0px] transition-all duration-300`}>
-            <div className='lg:hidden'>
+    <div className={`w-[100%]`}>
+      <div className={`flex justify-between py-[15px] px-[20px] lg:px-[50px] bg-base w-full z-[200] md:h-[15vh] sticky top-0 ${showIconDrawer ? "translate-x-[100px]" : ""} lg:translate-x-[0px] transition-all duration-300`}>
+        <div className='flex items-center gap-5 '>
+          <div className='lg:hidden'>
               {showIconDrawer ?
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"
                   onClick={() => setShowIconDrawer(false)}
@@ -309,7 +309,7 @@ export default function DeliveryCharges({ setShowFilter, setShowIconDrawer, show
         </div>
 
         {/* Main Content */}
-        <div className={`mt-[100px] px-[20px] lg:px-[50px] pb-[60px] flex flex-col gap-[10px] lg:gap-[30px]`}>
+        <div className={`mt-[20px] px-[20px] lg:px-[50px] pb-[60px] flex flex-col gap-[10px] lg:gap-[30px]`}>
           {POSTCODES.map((data, id) => {
             return (
               <ChargeCard handleOpen={handleOpen} open={open} data={data} key={id} id={id} />

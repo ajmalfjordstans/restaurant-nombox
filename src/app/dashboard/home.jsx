@@ -132,9 +132,9 @@ const DashboardOptions = [
 
 export default function Home({ setShowFilter, setShowIconDrawer, showIconDrawer }) {
   return (
-    <div className='overflow-hidden h-[100vh] w-full overflow-y-scroll flex'>
+    <div className='overflow-hidden w-full overflow-y-scroll flex'>
       <div className={`w-[100%]`}>
-        <div className='flex justify-between py-[15px] px-[20px] lg:px-[50px] bg-base w-full z-[200] md:h-[15vh] fixed top-0'>
+        <div className='flex justify-between py-[15px] px-[20px] lg:px-[50px] bg-base w-full z-[200] md:h-[15vh] sticky top-0'>
           <div className={`flex items-center gap-5  ${showIconDrawer ? "translate-x-[100px]" : ""} lg:translate-x-[0px] transition-all duration-300`}>
             <div className='lg:hidden'>
               {showIconDrawer ?
@@ -175,7 +175,7 @@ export default function Home({ setShowFilter, setShowIconDrawer, showIconDrawer 
         </div>
         {/* Main Content */}
         <div className='w-full flex justify-center'>
-          <div className={`mt-[100px] px-[20px] lg:px-[50px] pb-[60px] grid grid-cols-2 md:flex flex-wrap gap-[30px]`}>
+          <div className={`mt-[20px] px-[20px] lg:px-[50px] pb-[60px] grid grid-cols-2 md:flex flex-wrap gap-[30px]`}>
             {DashboardOptions.map((data, id) => {
               return (
                 <Link key={id} href={data.link}>
