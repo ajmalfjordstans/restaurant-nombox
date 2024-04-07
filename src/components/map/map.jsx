@@ -25,7 +25,7 @@ export default function GoogleMapComponent() {
     map.fitBounds(bounds);
 
     setMap(map)
-  }, [])
+  }, [center])
 
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null)

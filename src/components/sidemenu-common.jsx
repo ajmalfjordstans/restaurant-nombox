@@ -9,7 +9,7 @@ export default function SideMenuCommon({ active, showIconDrawer, setShowIconDraw
     if (window.innerWidth < 770) {
       setShowIconDrawer(false)
     }
-  }, [section])
+  }, [section, setShowIconDrawer])
   return (
     <div className={`w-[100px] h-[100vh] bg-primary flex flex-col justify-around ${showIconDrawer ? "" : 'hidden'} fixed lg:relative z-[300]`}>
       <div>
