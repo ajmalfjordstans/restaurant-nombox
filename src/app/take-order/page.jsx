@@ -50,7 +50,7 @@ function RenderPage({ setActive, setShowFilter, setShowDrawer, setShowIconDrawer
       return <Home setShowFilter={setShowFilter} setShowDrawer={setShowDrawer} setShowIconDrawer={setShowIconDrawer} showIconDrawer={showIconDrawer} />
   }
 }
-
+ 
 function RenderDrawer({ showDrawer }) {
   if (showDrawer === 'cart') {
     return (

@@ -11,7 +11,7 @@ export default function SideMenu({ active, showIconDrawer, setShowIconDrawer }) 
     }
   }, [section, setShowIconDrawer])
   return (
-    <div className={`w-[100px] h-[100vh] ${showIconDrawer ? "" : 'hidden'} fixed lg:relative bg-primary flex flex-col justify-around transition-all duration-300 z-[300]`}>
+    <div className={`w-[100px] h-[100dvh] ${showIconDrawer ? "" : 'hidden'} fixed lg:relative bg-primary flex flex-col justify-around transition-all duration-300 z-[300]`}>
       <div>
         {/* Report */}
         <Link href="/super-admin?section=report">

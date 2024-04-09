@@ -95,7 +95,7 @@ export default function Report({ setShowFilter, setShowIconDrawer, showIconDrawe
               <p className='font-sora font-[600] text-[14px] leading-[17px]'>Z-Report Stat</p>
             </div>
             <div className='flex items-center gap-10'>
-              <div className="max-w-72">
+              <div className="w-full md:max-w-72">
                 <Select label="Select Restaurant" className='bg-white'>
                   <Option>Restaurant 1</Option>
                   <Option>Restaurant 2</Option>
