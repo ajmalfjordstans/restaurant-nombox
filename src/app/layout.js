@@ -20,6 +20,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <script
+        defer
+        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}`}
+        ></script>
+      </head>
       <body className={`${raleway.className} ${raleway.variable} ${sora.variable} bg-base`}>
         <Layout>
           {children}

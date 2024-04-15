@@ -183,7 +183,7 @@ function RenderDrawer({ showDrawer }) {
 
 export default function Page() {
   const [active, setActive] = useState('')
-  const [showFilter, setShowFilter] = useState(false) //Default True if drawer to be shown always
+  const [showFilter, setShowFilter] = useState(true) //Default True if drawer to be shown always
   const [showDrawer, setShowDrawer] = useState('cart')
   const [showIconDrawer, setShowIconDrawer] = useState('true')
   useEffect(() => {

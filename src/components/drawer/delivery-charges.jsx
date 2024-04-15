@@ -2,6 +2,7 @@
 import { Button, Option, Select } from '@material-tailwind/react'
 import React, { useState } from 'react'
 import GoogleMapComponent from '../map/map'
+import ChooseLocation from '../map/chooseLocation'
 
 export default function DeliveryChargesDrawer() {
   const [showAdd, setShowAdd] = useState(false)
@@ -71,12 +72,9 @@ export default function DeliveryChargesDrawer() {
               </div>
               <div className='flex flex-col gap-2'>
                 <p className='font-raleway font-[700] text-[20px] leading-[24px]'>Choose Location</p>
-                <input type="text" className='py-[10px] px-[15px] rounded-[10px] bg-base outline-none w-full'
-                  onChange={(e) => setCustomerFormData({
-                    ...customerFormData,
-                    location: e.target.value
-                  })}
-                />
+                <div className='rounded-[20px] overflow-hidden max-w-full '>
+                  <ChooseLocation />
+                </div>
               </div>
               <p className='font-raleway font-[700] text-[20px] leading-[24px] text-primary'>Delivery Limit</p>
               <div className='flex gap-2'>

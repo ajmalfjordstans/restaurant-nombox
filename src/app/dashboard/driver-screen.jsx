@@ -1,3 +1,4 @@
+import DriverMap from '@/components/map/driverMap'
 import React from 'react'
 
 export default function DriverScreen({ setShowFilter, setShowIconDrawer, showIconDrawer }) {
@@ -57,7 +58,9 @@ export default function DriverScreen({ setShowFilter, setShowIconDrawer, showIco
 
         {/* Main Content */}
         <div className={`mt-[20px] px-[20px] lg:px-[50px] pb-[60px] flex flex-col gap-[30px] text-white`}>
-
+          <div className='rounded-[20px] overflow-hidden'>
+            <DriverMap />
+          </div>
         </div >
       </div>
     </div>
